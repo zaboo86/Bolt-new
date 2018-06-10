@@ -1,0 +1,1305 @@
+{
+    "general": {
+        "database": {
+            "driver": "pdo_sqlite",
+            "host": "localhost",
+            "slaves": [],
+            "dbname": "bolt",
+            "prefix": "bolt_",
+            "charset": "utf8",
+            "collate": "utf8_unicode_ci",
+            "randomfunction": "RANDOM()",
+            "databasename": "bolt",
+            "wrapperClass": "Bolt\\Storage\\Database\\Connection",
+            "path": "/var/www/bolt/app/database/bolt.db"
+        },
+        "sitename": "Independent Tutorial",
+        "locale": "en_GB",
+        "recordsperpage": 10,
+        "recordsperdashboardwidget": 5,
+        "systemlog": {
+            "enabled": true
+        },
+        "changelog": {
+            "enabled": true
+        },
+        "debuglog": {
+            "enabled": true,
+            "level": "DEBUG",
+            "filename": "bolt-debug.log"
+        },
+        "debug": true,
+        "debug_show_loggedoff": false,
+        "debug_error_level": 8181,
+        "production_error_level": 8181,
+        "debug_enable_whoops": false,
+        "debug_error_use_symfony": false,
+        "debug_permission_audit_mode": false,
+        "debug_trace_argument_limit": 4,
+        "strict_variables": false,
+        "theme": "IT",
+        "listing_template": "listing.twig",
+        "listing_records": 6,
+        "listing_sort": "datepublish DESC",
+        "caching": {
+            "config": true,
+            "templates": true,
+            "request": false,
+            "duration": 10,
+            "authenticated": false,
+            "thumbnails": true,
+            "translations": true
+        },
+        "wysiwyg": {
+            "images": true,
+            "tables": false,
+            "fontcolor": false,
+            "align": false,
+            "subsuper": false,
+            "embed": false,
+            "anchor": false,
+            "underline": false,
+            "strike": false,
+            "blockquote": false,
+            "codesnippet": false,
+            "specialchar": false,
+            "styles": false,
+            "ck": {
+                "autoParagraph": true,
+                "contentsCss": [
+                    [
+                        "css/ckeditor-contents.css",
+                        "bolt"
+                    ],
+                    [
+                        "css/ckeditor.css",
+                        "bolt"
+                    ]
+                ],
+                "filebrowserWindowWidth": 640,
+                "filebrowserWindowHeight": 480,
+                "disableNativeSpellChecker": true,
+                "allowNbsp": false
+            },
+            "ruler": false,
+            "clipboard": false,
+            "copypaste": false
+        },
+        "liveeditor": false,
+        "canonical": null,
+        "developer_notices": false,
+        "cookies_use_remoteaddr": true,
+        "cookies_use_browseragent": false,
+        "cookies_use_httphost": true,
+        "cookies_lifetime": 1209600,
+        "enforce_ssl": false,
+        "thumbnails": {
+            "default_thumbnail": [
+                160,
+                120
+            ],
+            "default_image": [
+                1000,
+                750
+            ],
+            "quality": 80,
+            "cropping": "crop",
+            "notfound_image": "bolt_assets://img/default_notfound.png",
+            "error_image": "bolt_assets://img/default_error.png",
+            "only_aliases": false,
+            "save_files": true,
+            "allow_upscale": false,
+            "exif_orientation": true,
+            "browser_cache_time": 2592000
+        },
+        "accept_file_types": [
+            "twig",
+            "html",
+            "js",
+            "css",
+            "scss",
+            "gif",
+            "jpg",
+            "jpeg",
+            "png",
+            "ico",
+            "zip",
+            "tgz",
+            "txt",
+            "md",
+            "doc",
+            "docx",
+            "pdf",
+            "epub",
+            "xls",
+            "xlsx",
+            "ppt",
+            "pptx",
+            "mp3",
+            "ogg",
+            "wav",
+            "m4a",
+            "mp4",
+            "m4v",
+            "ogv",
+            "wmv",
+            "avi",
+            "webm",
+            "svg",
+            "eot",
+            "svg",
+            "woff",
+            "woff2",
+            "ttf",
+            "otf"
+        ],
+        "hash_strength": 10,
+        "branding": {
+            "name": "Bolt",
+            "path": "/bolt",
+            "provided_by": [],
+            "provided_link": ""
+        },
+        "maintenance_mode": false,
+        "headers": {
+            "x_frame_options": true
+        },
+        "htmlcleaner": {
+            "allowed_tags": [
+                "video",
+                "source",
+                "track",
+                "div",
+                "span",
+                "p",
+                "br",
+                "hr",
+                "s",
+                "u",
+                "strong",
+                "em",
+                "i",
+                "b",
+                "li",
+                "ul",
+                "ol",
+                "mark",
+                "blockquote",
+                "pre",
+                "code",
+                "tt",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "dd",
+                "dl",
+                "dt",
+                "table",
+                "tbody",
+                "thead",
+                "tfoot",
+                "th",
+                "td",
+                "tr",
+                "a",
+                "img",
+                "address",
+                "abbr",
+                "iframe",
+                "caption",
+                "sub",
+                "super",
+                "figure",
+                "figcaption"
+            ],
+            "allowed_attributes": [
+                "preload",
+                "controls",
+                "muted",
+                "autoplay",
+                "playsinline",
+                "loop",
+                "poster",
+                "type",
+                "label",
+                "kind",
+                "srclang",
+                "id",
+                "class",
+                "style",
+                "name",
+                "value",
+                "href",
+                "src",
+                "alt",
+                "title",
+                "width",
+                "height",
+                "frameborder",
+                "allowfullscreen",
+                "scrolling",
+                "target",
+                "colspan",
+                "rowspan"
+            ]
+        },
+        "performance": {
+            "http_cache": {
+                "options": []
+            },
+            "timed_records": {
+                "interval": 3600,
+                "use_cron": false
+            }
+        },
+        "payoff": "StudCorp",
+        "maintenance_template": "maintenance_default.twig",
+        "cron_hour": 3,
+        "homepage": "homepage/1",
+        "homepage_template": "index.twig",
+        "page": "page/1",
+        "page_template": "registration.twig",
+        "notfound": [
+            "not-found.twig",
+            "block/404-not-found"
+        ],
+        "record_template": "record.twig",
+        "taxonomy_sort": "DESC",
+        "search_results_template": "search.twig",
+        "search_results_records": 10,
+        "add_jquery": false,
+        "upload": {
+            "pattern": "[^A-Za-z0-9\\.]+",
+            "replacement": "-",
+            "lowercase": false
+        },
+        "cookies_domain": null,
+        "compatibility": {
+            "template_view": true,
+            "setcontent_legacy": true
+        }
+    },
+    "taxonomy": {
+        "tags": {
+            "slug": "tags",
+            "singular_slug": "tag",
+            "behaves_like": "tags",
+            "postfix": "Add some freeform tags. Start a new tag by typing a comma or space.",
+            "allow_spaces": false,
+            "name": "Tags",
+            "singular_name": "Tag",
+            "has_sortorder": false,
+            "tagcloud": true
+        },
+        "groups": {
+            "slug": "groups",
+            "singular_slug": "group",
+            "behaves_like": "grouping",
+            "options": {
+                "main": "Mathe",
+                "programmieren": "Programmieren",
+                "other": "The other stuff"
+            },
+            "has_sortorder": true,
+            "name": "Groups",
+            "singular_name": "Group",
+            "allow_spaces": false,
+            "tagcloud": false
+        },
+        "categories": {
+            "name": "Categories",
+            "slug": "categories",
+            "singular_name": "Category",
+            "singular_slug": "category",
+            "behaves_like": "categories",
+            "multiple": true,
+            "options": {
+                "mathe": "mathe",
+                "programmieren": "programmieren",
+                "webentwicklung": "webentwicklung"
+            },
+            "has_sortorder": false,
+            "allow_spaces": false,
+            "tagcloud": false
+        }
+    },
+    "contenttypes": {
+        "homepage": {
+            "name": "Homepage",
+            "singular_name": "Homepage",
+            "fields": {
+                "title": {
+                    "class": "large",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "text",
+                    "postfix": "The 'Homepage' can contain basic information about the website. This title will be\nshown on the homepage of the website, as the name implies. To change the\n<em><strong>name</strong></em> of the site, as is shown in the header, and the tab\nin the webbrowser, edit <code>sitename:</code> in the configuration file.\n"
+                },
+                "image": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "image",
+                    "placeholder": "https://source.unsplash.com/1920x640/?cityscape,landscape,nature/__random__",
+                    "extensions": {
+                        "1": "gif",
+                        "2": "jpeg",
+                        "3": "png",
+                        "17": "ico",
+                        "101": "svg",
+                        "102": "jpg"
+                    }
+                },
+                "teaser": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "html",
+                    "height": "150px"
+                },
+                "content": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "html",
+                    "height": "300px"
+                },
+                "contentlink": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "Link",
+                    "variant": "",
+                    "type": "text",
+                    "placeholder": "contenttype/slug or http://example.org/",
+                    "postfix": "Use this to add a link for this Homepage. This could either be an 'internal' link like <tt>page//about</tt>, if you use a contenttype/slug combination. Otherwise use a proper URL, like `http://example.org`."
+                },
+                "slug": {
+                    "class": "",
+                    "default": "",
+                    "group": "meta",
+                    "label": "",
+                    "variant": "",
+                    "type": "slug",
+                    "uses": [
+                        "title"
+                    ]
+                }
+            },
+            "viewless": true,
+            "singleton": true,
+            "default_status": "published",
+            "icon_many": "fa:home",
+            "icon_one": "fa:home",
+            "slug": "homepage",
+            "singular_slug": "homepage",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "liveeditor": false,
+            "tablename": "homepage",
+            "allow_numeric_slugs": false,
+            "groups": [
+                "content",
+                "meta"
+            ]
+        },
+        "tutorials": {
+            "name": "Tutorials",
+            "singular_name": "Tutorial",
+            "fields": {
+                "title": {
+                    "class": "large",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "text"
+                },
+                "slug": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "slug",
+                    "uses": [
+                        "title"
+                    ]
+                },
+                "image": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "image",
+                    "placeholder": "https://source.unsplash.com/1280x768/?business,workplace/__random__",
+                    "upload": "img_tutorial",
+                    "extensions": {
+                        "1": "gif",
+                        "2": "jpeg",
+                        "3": "png",
+                        "17": "ico",
+                        "101": "svg",
+                        "102": "jpg"
+                    }
+                },
+                "teaser": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "textarea",
+                    "height": "150px"
+                },
+                "body": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "textarea",
+                    "height": "300px"
+                },
+                "guid": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                },
+                "template": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "templateselect",
+                    "filter": "*.twig"
+                }
+            },
+            "default_status": "published",
+            "taxonomy": [
+                "groups"
+            ],
+            "recordsperpage": 20,
+            "icon_many": "fa:beer",
+            "icon_one": "fa:beer",
+            "slug": "tutorials",
+            "singular_slug": "tutorial",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "tutorials",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": [
+                "content"
+            ]
+        },
+        "pages": {
+            "name": "Pages",
+            "singular_name": "Page",
+            "fields": {
+                "title": {
+                    "class": "large",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "text"
+                },
+                "slug": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "slug",
+                    "uses": [
+                        "title"
+                    ]
+                },
+                "template": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "templateselect",
+                    "filter": "*.twig"
+                }
+            },
+            "default_status": "published",
+            "taxonomy": [
+                "groups"
+            ],
+            "recordsperpage": 20,
+            "icon_many": "fa:angellist",
+            "icon_one": "fa:angellist",
+            "searchable": false,
+            "slug": "pages",
+            "singular_slug": "page",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "pages",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": [
+                "content"
+            ]
+        },
+        "entries": {
+            "name": "Entries",
+            "singular_name": "Entry",
+            "fields": {
+                "title": {
+                    "class": "large",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "text"
+                },
+                "slug": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "slug",
+                    "uses": [
+                        "title"
+                    ]
+                },
+                "teaser": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "textarea",
+                    "height": "150px"
+                },
+                "body": {
+                    "class": "",
+                    "default": "",
+                    "group": "content",
+                    "label": "",
+                    "variant": "",
+                    "type": "textarea",
+                    "height": "300px"
+                },
+                "image": {
+                    "class": "",
+                    "default": "",
+                    "group": "media",
+                    "label": "",
+                    "variant": "",
+                    "type": "image",
+                    "placeholder": "https://source.unsplash.com/1280x768/?business,workspace,interior/__random__",
+                    "extensions": {
+                        "1": "gif",
+                        "2": "jpeg",
+                        "3": "png",
+                        "17": "ico",
+                        "101": "svg",
+                        "102": "jpg"
+                    }
+                },
+                "video2": {
+                    "class": "",
+                    "default": "",
+                    "group": "media",
+                    "label": "",
+                    "variant": "",
+                    "type": "h5video"
+                },
+                "video": {
+                    "class": "",
+                    "default": "",
+                    "group": "media",
+                    "label": "",
+                    "variant": "",
+                    "type": "video"
+                },
+                "viedeolist": {
+                    "class": "",
+                    "default": "",
+                    "group": "media",
+                    "label": "",
+                    "variant": "",
+                    "type": "filelist",
+                    "extensions": [
+                        "twig",
+                        "html",
+                        "js",
+                        "css",
+                        "scss",
+                        "gif",
+                        "jpg",
+                        "jpeg",
+                        "png",
+                        "ico",
+                        "zip",
+                        "tgz",
+                        "txt",
+                        "md",
+                        "doc",
+                        "docx",
+                        "pdf",
+                        "epub",
+                        "xls",
+                        "xlsx",
+                        "ppt",
+                        "pptx",
+                        "mp3",
+                        "ogg",
+                        "wav",
+                        "m4a",
+                        "mp4",
+                        "m4v",
+                        "ogv",
+                        "wmv",
+                        "avi",
+                        "webm",
+                        "svg",
+                        "eot",
+                        "svg",
+                        "woff",
+                        "woff2",
+                        "ttf",
+                        "otf"
+                    ]
+                },
+                "tutorialid": {
+                    "class": "",
+                    "default": "",
+                    "group": "media",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                }
+            },
+            "relations": {
+                "tutorials": {
+                    "multiple": false,
+                    "order": "title",
+                    "label": "Select a tutorial"
+                }
+            },
+            "taxonomy": [
+                "categories",
+                "tags"
+            ],
+            "record_template": "entry.twig",
+            "listing_template": "listing.twig",
+            "listing_records": 10,
+            "default_status": "published",
+            "sort": "-datepublish",
+            "recordsperpage": 20,
+            "icon_many": "fa:gamepad",
+            "icon_one": "fa:gamepad",
+            "slug": "entries",
+            "singular_slug": "entry",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "entries",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": [
+                "content",
+                "media"
+            ]
+        },
+        "responses": {
+            "name": "Responses",
+            "singular_name": "Response",
+            "fields": {
+                "title": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "Name",
+                    "variant": "",
+                    "type": "text"
+                },
+                "animal": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "select",
+                    "values": {
+                        "I am a cat": "I am a cat",
+                        "I am a raccoon": "I am a raccoon",
+                        "I am a Koala": "I am a Koala"
+                    }
+                },
+                "sent_message": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "textarea"
+                }
+            },
+            "show_on_dashboard": true,
+            "default_status": "published",
+            "searchable": true,
+            "icon_many": "fa:gift",
+            "icon_one": "fa:gift",
+            "slug": "responses",
+            "singular_slug": "response",
+            "show_in_menu": true,
+            "sort": false,
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "responses",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": []
+        },
+        "create_quizes": {
+            "name": "Create_quizes",
+            "singular_name": "Create_quiz",
+            "fields": {
+                "question": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "text",
+                    "name": "question"
+                },
+                "answer1": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "text",
+                    "name": "answer1"
+                },
+                "answer2": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "text",
+                    "name": "answer2"
+                },
+                "answer3": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "text",
+                    "name": "answer3"
+                },
+                "answer4": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "text",
+                    "name": "answer4"
+                },
+                "correct_answer": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "select",
+                    "values": {
+                        "Answer1": "answer1",
+                        "Answer2": "answer2",
+                        "Answer3": "answer3",
+                        "Answer4": "answer4"
+                    }
+                },
+                "tutorialid": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "select"
+                }
+            },
+            "relations": {
+                "tutorials": {
+                    "multiple": false,
+                    "order": "title",
+                    "label": "Select a tutorial"
+                }
+            },
+            "searchable": false,
+            "slug": "create-quizes",
+            "singular_slug": "create-quiz",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "default_status": "draft",
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "create_quizes",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": []
+        },
+        "abo": {
+            "name": "abos",
+            "singular_name": "abo",
+            "fields": {
+                "guid": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                },
+                "tutorialid": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                }
+            },
+            "searchable": false,
+            "slug": "abo",
+            "singular_slug": "abo",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "default_status": "draft",
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "abo",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": []
+        },
+        "upload": {
+            "name": "uploads",
+            "singular_name": "upload",
+            "fields": {
+                "pdf": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "file",
+                    "extensions": [
+                        "twig",
+                        "html",
+                        "js",
+                        "css",
+                        "scss",
+                        "gif",
+                        "jpg",
+                        "jpeg",
+                        "png",
+                        "ico",
+                        "zip",
+                        "tgz",
+                        "txt",
+                        "md",
+                        "doc",
+                        "docx",
+                        "pdf",
+                        "epub",
+                        "xls",
+                        "xlsx",
+                        "ppt",
+                        "pptx",
+                        "mp3",
+                        "ogg",
+                        "wav",
+                        "m4a",
+                        "mp4",
+                        "m4v",
+                        "ogv",
+                        "wmv",
+                        "avi",
+                        "webm",
+                        "svg",
+                        "eot",
+                        "svg",
+                        "woff",
+                        "woff2",
+                        "ttf",
+                        "otf"
+                    ]
+                },
+                "tutorialid": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                }
+            },
+            "searchable": false,
+            "slug": "upload",
+            "singular_slug": "upload",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "default_status": "draft",
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "upload",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": []
+        }
+    },
+    "menu": {
+        "main": [
+            {
+                "label": "Home",
+                "title": "This is the first menu item.",
+                "path": "homepage",
+                "class": "first"
+            },
+            {
+                "label": "Studiengang",
+                "path": "entry/1",
+                "submenu": [
+                    {
+                        "label": "AI",
+                        "path": "entry/2"
+                    },
+                    {
+                        "label": "MI",
+                        "class": "menu-item-class",
+                        "path": "entry/3"
+                    },
+                    {
+                        "label": "EW",
+                        "path": "entry/4"
+                    },
+                    {
+                        "label": "BWL",
+                        "class": "sub-class",
+                        "path": "page/3"
+                    }
+                ]
+            },
+            {
+                "label": "All pages",
+                "path": "pages/",
+                "class": "last"
+            }
+        ],
+        "somevalue": {
+            "type": "select",
+            "values": [
+                "none",
+                "foo",
+                "bar"
+            ]
+        },
+        "label": "Kategorie",
+        "path": "pages",
+        "list": {
+            "contenttype": "pages",
+            "taxonomytype": "fachrichtung",
+            "taxonomy": "main",
+            "class": "last"
+        }
+    },
+    "routing": {
+        "homepage": {
+            "path": "/",
+            "defaults": {
+                "_controller": "controller.frontend:homepage"
+            }
+        },
+        "search": {
+            "path": "/search",
+            "defaults": {
+                "_controller": "controller.frontend:search"
+            }
+        },
+        "preview": {
+            "path": "/preview/{contenttypeslug}",
+            "defaults": {
+                "_controller": "controller.frontend:preview"
+            },
+            "requirements": {
+                "contenttypeslug": "controller.requirement:anyContentType"
+            }
+        },
+        "contentlink": {
+            "path": "/{contenttypeslug}/{slug}",
+            "defaults": {
+                "_controller": "controller.frontend:record"
+            },
+            "requirements": {
+                "contenttypeslug": "controller.requirement:anyContentType"
+            }
+        },
+        "taxonomylink": {
+            "path": "/{taxonomytype}/{slug}",
+            "defaults": {
+                "_controller": "controller.frontend:taxonomy"
+            },
+            "requirements": {
+                "taxonomytype": "controller.requirement:anyTaxonomyType"
+            }
+        },
+        "contentlisting": {
+            "path": "/{contenttypeslug}",
+            "defaults": {
+                "_controller": "controller.frontend:listing"
+            },
+            "requirements": {
+                "contenttypeslug": "controller.requirement:pluralContentTypes"
+            }
+        }
+    },
+    "permissions": {
+        "roles": {
+            "editor": {
+                "description": "This user can edit some content.",
+                "label": "Editor"
+            },
+            "chief-editor": {
+                "description": "This user can edit any content in the system.",
+                "label": "Chief Editor"
+            },
+            "admin": {
+                "description": "User-level administrator.",
+                "label": "Administrator"
+            },
+            "developer": {
+                "description": "Developer access. Only required to change system-level settings.",
+                "label": "Developer"
+            },
+            "guest": {
+                "description": "This user can log on, but is not allowed to edit any content.",
+                "label": "Guest Editor"
+            }
+        },
+        "roles-hierarchy": {
+            "manipulate": {
+                "admin": [],
+                "developer": [
+                    "admin"
+                ],
+                "chief-editor": [
+                    "admin",
+                    "developer"
+                ],
+                "editor": [
+                    "admin",
+                    "developer",
+                    "chief-editor"
+                ],
+                "guest": [
+                    "admin",
+                    "developer",
+                    "chief-editor"
+                ]
+            }
+        },
+        "global": {
+            "about": [
+                "everyone"
+            ],
+            "clearcache": [
+                "admin",
+                "developer"
+            ],
+            "contentaction": [
+                "editor",
+                "admin",
+                "developer"
+            ],
+            "dashboard": [
+                "everyone"
+            ],
+            "dbcheck": [
+                "admin",
+                "developer"
+            ],
+            "dbupdate": [
+                "admin",
+                "developer"
+            ],
+            "dbupdate_result": [
+                "admin",
+                "developer"
+            ],
+            "extensions": [
+                "developer"
+            ],
+            "extensions:config": [
+                "developer"
+            ],
+            "fileedit": [
+                "admin",
+                "developer"
+            ],
+            "files:config": [
+                "developer"
+            ],
+            "files:hidden": [
+                "developer"
+            ],
+            "files:theme": [
+                "developer"
+            ],
+            "files:uploads": [
+                "admin",
+                "developer",
+                "chief-editor",
+                "editor",
+                "everyone"
+            ],
+            "files": [
+                "admin",
+                "developer",
+                "chief-editor",
+                "editor",
+                "everyone"
+            ],
+            "prefill": [
+                "developer"
+            ],
+            "profile": [
+                "everyone"
+            ],
+            "settings": [
+                "admin",
+                "developer",
+                "everyone"
+            ],
+            "translation": [
+                "developer"
+            ],
+            "useraction": [
+                "admin",
+                "developer"
+            ],
+            "useredit": [
+                "admin",
+                "developer"
+            ],
+            "users": [
+                "admin",
+                "developer"
+            ],
+            "roles": [
+                "admin",
+                "developer"
+            ],
+            "maintenance-mode": [
+                "everyone"
+            ],
+            "omnisearch": [
+                "everyone"
+            ],
+            "changelog": [
+                "admin",
+                "developer",
+                "chief-editor"
+            ],
+            "systemlog": [
+                "admin",
+                "developer"
+            ],
+            "login": [
+                "anonymous"
+            ],
+            "postLogin": [
+                "anonymous"
+            ],
+            "logout": [
+                "everyone"
+            ]
+        },
+        "contenttype-all": {
+            "edit": [
+                "developer",
+                "admin",
+                "chief-editor"
+            ],
+            "create": [
+                "developer",
+                "admin",
+                "chief-editor"
+            ],
+            "publish": [
+                "developer",
+                "admin",
+                "chief-editor"
+            ],
+            "depublish": [
+                "developer",
+                "admin",
+                "chief-editor"
+            ],
+            "delete": [
+                "developer",
+                "admin"
+            ],
+            "change-ownership": [
+                "developer",
+                "admin"
+            ]
+        },
+        "contenttype-default": {
+            "edit": [
+                "editor"
+            ],
+            "create": [
+                "editor"
+            ],
+            "change-ownership": [
+                "owner"
+            ],
+            "view": [
+                "anonymous"
+            ]
+        },
+        "contenttypes": null
+    },
+    "extensions": [],
+    "theme": []
+}

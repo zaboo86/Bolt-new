@@ -11,7 +11,7 @@ database:
    
 
 # The name of the website
-sitename: Independent Tutoriell
+sitename: Independent Tutorial
 payoff: StudCorp
 
 # The theme to use.
@@ -19,7 +19,7 @@ payoff: StudCorp
 # Don't edit the provided templates directly, because they _will_ get updated
 # in next releases. If you wish to modify a default theme, copy its folder, and
 # change the name here accordingly.
-theme: IT2
+theme: IT
 
 # The locale that'll be used by the application. If no locale is set the
 # fallback locale is 'en_GB'. For available options, see:

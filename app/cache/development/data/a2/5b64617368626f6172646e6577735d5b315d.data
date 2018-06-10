@@ -1,0 +1,18 @@
+1528650947
+a:1:{s:11:"information";a:11:{s:2:"id";s:2:"59";s:4:"slug";s:17:"bolt-350-released";s:11:"datecreated";s:19:"2018-04-22 11:26:41";s:11:"datechanged";s:19:"2018-04-22 11:26:41";s:8:"username";s:0:"";s:6:"status";s:9:"published";s:5:"title";s:19:"Bolt 3.5.0 released";s:6:"teaser";s:496:"<p>We're happy to announce the release of&nbsp;<b>Bolt 3.5.0</b>, with new features and improvements!</p>
+
+
+<ul>
+
+	<li>New default Base 2018 theme</li>
+
+	<li>New generic Embed field type</li>
+
+	<li>Collapsible Repeaters and Blocks</li>
+
+	<li>Backend menu improvements</li>
+
+	<li>Homepage singleton in the default ContentTypes</li></ul>
+
+<p><a href="https://bolt.cm/item/bolt-3-5-0-released">See the site for details on these new features, and on how to install or update.</a></p>
+";s:4:"link";s:40:"https://bolt.cm/item/bolt-3-5-0-released";s:4:"type";s:4:"news";s:14:"target_version";s:0:"";}}

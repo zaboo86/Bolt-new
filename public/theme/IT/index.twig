@@ -1,113 +1,30 @@
-<<<<<<< HEAD
-{% extends 'partials/master.twig' %}
-
-{% block main %}
-
-    {% if record is defined %}
-
-      {#  <h1>{{ record.title }}</h1>#}
-        {{include('partials/header.twig')}}
-
-       {% setcontent pageitems = "pages/latest/6" %}
-
-    <div class="article-list">
-        <div class="container">
-           
-          <div class="row articles"> 
-{% for pageitem in pageitems %}
-   
-
-             
-               <div class="col-sm-6 col-md-4 item">
-<article>
-    <h4><a href="{{ pageitem.link }}">{{ pageitem.title }}</a></h4>
-   {% if pageitem.image!="" %}
-    <p><img src="{{ pageitem.image|thumbnail(90, 90) }}"></p>
-    {% endif %}
-    {{ pageitem.excerpt }}
-    <a href="{{ pageitem.link }}" class="action"><i class="fa fa-arrow-circle-right"></i></a>
-
-    <p class="meta"><a href="{{ pageitem.link }}">Link</a> -
-    Posted by {{ pageitem.user.displayname }}
-    on {{ pageitem.datecreated|date("M d, ’y")}}</p>
-
-</article>
-
-  </div>
-{% endfor %}
-              
-                                  </div>
-                </div>
-            </div>
-  
-{# {{ record.teaser }}
-
-        {{ popup(record.image, 1200, 500) }} 
-
-        {{ record.body }}
-
-        {{ record.content }}
-
-        {{ record.page }}#}
-     {#   {{ include('partials/recordfooter.twig', { 'record': record }) }}
-#}
-    {% endif %}
-
-{% endblock main %}
-=======
-{% extends 'partials/master.twig' %}
-
-{% block main %}
-
-    {% if record is defined %}
-
-      {#  <h1>{{ record.title }}</h1>#}
-        {{include('partials/header.twig')}}
-
-       {% setcontent pageitems = "pages/latest/6" %}
-
-    <div class="article-list">
-        <div class="container">
-           
-          <div class="row articles"> 
-{% for pageitem in pageitems %}
-   
-
-             
-               <div class="col-sm-6 col-md-4 item">
-<article>
-    <h4><a href="{{ pageitem.link }}">{{ pageitem.title }}</a></h4>
-   {% if pageitem.image!="" %}
-    <p><img src="{{ pageitem.image|thumbnail(90, 90) }}"></p>
-    {% endif %}
-    {{ pageitem.excerpt }}
-    <a href="{{ pageitem.link }}" class="action"><i class="fa fa-arrow-circle-right"></i></a>
-
-    <p class="meta"><a href="{{ pageitem.link }}">Link</a> -
-    Posted by {{ pageitem.user.displayname }}
-    on {{ pageitem.datecreated|date("M d, ’y")}}</p>
-
-</article>
-
-  </div>
-{% endfor %}
-              
-                                  </div>
-                </div>
-            </div>
-  
-{# {{ record.teaser }}
-
-        {{ popup(record.image, 1200, 500) }} 
-
-        {{ record.body }}
-
-        {{ record.content }}
-
-        {{ record.page }}#}
-     {#   {{ include('partials/recordfooter.twig', { 'record': record }) }}
-#}
-    {% endif %}
-
-{% endblock main %}
->>>>>>> New
+{% extends 'partials/_master.twig' %}
+{% block main %} {% if record is defined %} 
+{{include('partials/_header.twig')}} 
+{% setcontent reponitems = "reponses/latest/6" %} 
+{% setcontent pageitems = "tutorial/latest/6" %}
+<div class="row articles">
+    {% for pageitem in pageitems %}
+    <div class="col-sm-6 col-md-4 item">
+        {% if pageitem.image is not empty %}
+        <a href="{{ pageitem.link }}">
+            <img src="/thumbs/91x91c/2018-06/{{ pageitem.image|default() }}">
+        </a>
+        {% endif %}
+        <h3 class="name">
+            <a href="{{pageitem.link}}">{{ pageitem.title }}</a>
+        </h3>
+        <p class="description">{{ pageitem.excerpt }}</p>
+        <a href="{{ pageitem.link }}" class="action">
+            <i class="fa fa-arrow-circle-right"></i>
+        </a>
+        <p class="meta">
+            <a href="{{ pageitem.link }}">Link</a>
+            - Posted by {{ pageitem.user.displayname }} on {{ pageitem.datecreated|date("M d, â€™y")}}</p>
+    </div>
+    {% endfor %}
+    {% for reponitem in reponitems %} 
+    {{reponitem.title}} 
+    {% endfor %}
+</div>
+{% endif %} {% endblock main %}
