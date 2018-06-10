@@ -1,0 +1,10 @@
+{% extends 'partials/_master.twig' %}
+{% block main %}
+{% set id= record.id %}
+{% setcontent download='upload' where {tutorialid: id} %}
+ {% if download is not empty %}
+   {% for down in download %}
+<a type='link' href='/files/2018-06/{{down.title}}'> {{down.title}} </a>
+{% endfor %}
+{% endif %}
+{% endblock %}

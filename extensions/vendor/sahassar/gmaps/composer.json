@@ -1,0 +1,30 @@
+{
+    "name": "sahassar/gmaps",
+    "type": "bolt-extension",
+    "description" : "A google maps extension",
+	"keywords" : [
+        "google maps",
+        "google",
+        "maps"
+	],
+    "require": {
+        "bolt/bolt": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+			"name" : "Svante Richter",
+			"email" : "svante.richter@gmail.com"
+		}
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bolt\\Extension\\sahassar\\gmaps\\": "src"
+        }
+    },
+    "extra": {
+        "bolt-assets": "web",
+        "bolt-class": "Bolt\\Extension\\sahassar\\gmaps\\gmapsExtension",
+        "bolt-icon": "web/gmaps-icon.png"
+    }
+}

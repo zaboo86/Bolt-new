@@ -1,0 +1,29 @@
+
+col.auth-column-check {
+    /*width: 10%;*/
+}
+
+col.auth-column-enabled {
+    /*width: 30%;*/
+}
+
+col.auth-column-guid {
+    /*width: 30%;*/
+}
+
+col.auth-column-displayname {
+    /*width: 10%;*/
+}
+
+col.auth-column-lastseen {
+    /*width: 10%;*/
+}
+
+col.auth-column-roles {
+    /*width: 10%;*/
+}
+
+tr.strikeout {
+    text-decoration: line-through;
+    color: red;
+}

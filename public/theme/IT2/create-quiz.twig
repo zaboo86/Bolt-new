@@ -1,0 +1,50 @@
+{% extends 'partials/_master.twig' %} 
+{% block main %} 
+{% set auth=auth() %} 
+{% set guid=auth.guid %} 
+{% set value=1 %} {%
+set temp = record.related()[0] %}
+{% set slug= record.slug %} 
+{% setcontent relatedrecords = 'create_quizes'where { tutorialid: temp.id } %}
+<div style="margin-top:0px;padding-bottom:15px;">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="nav nav-tabs ml-auto" id="navTutorial" data-spy="affix" data-offset-top="70px">
+                    {%include 'partials/_sub_head.twig'%}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-right:15px;padding-left:25px;margin-left:0px;">
+                <aside id="aside" class="card-header" style="margin-right:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+                    <ul class="list-group nav nav-tabs card-header-tabs">
+                        {{ include('partials/_aside.twig') }}
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-md-8">
+                <div class="card" style="margin-right:0px;margin-left:-15px;">
+                    <div class="card-body">
+                        {% for related in relatedrecords %} {% set slug2 =related.slug %} {% if slug == slug2 %}
+                        <h4 class="card-title">{{related.question}}</h4>
+                        <p> Question: </p>
+                        {{related.question}}
+                        <p> Answer 1: </p>
+                        {{related.answer1}}
+                        <p> Answer 2: </p>
+                        {{related.answer2}}
+                        <p> Answer 3: </p>
+                        {{related.answer3}}
+                        <p> Answer 4: </p>
+                        {{related.answer4}} {{boltforms('quiz-answer')}} {% endif %} {% endfor %}
+                        <br>
+                        <br> {% include 'partials/_record_meta.twig' with {'extended': true} %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

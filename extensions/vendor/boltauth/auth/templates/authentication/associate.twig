@@ -1,0 +1,38 @@
+{#
+ # Passed in variables:
+ #
+ #   * twigparent           — string    Template name to inherit from
+ #   * form_associate       — FormView  Authentiction provider form (Symfony\Component\Form\FormView)
+ #   * feedback             — Feedback  Informational, error, and debug feedback messages. @see feedback/feedback.twig
+ #   * templates            — array
+ #     * feedback           — string    Feedback messages template name
+ #   * providers            — array     Authentication providers enabled in Auth configuration
+ #}
+{% extends twigparent %}
+
+{% block login %}
+    {{ include(templates.feedback) }}
+
+
+    <div class="login">
+        <div class="row auth-login">
+
+            {{ _self.oauth_login(form_associate, providers) }}
+
+        </div>
+    </div>
+{% endblock login %}
+
+{% macro oauth_login(form_associate, providers) %}
+    <div class="small-6 columns auth-login-password">
+        {{ form_start(form_associate) }}
+
+        {% for provider in providers|keys %}
+            {% if provider != 'local' %}
+                {{ form_row(form_associate[provider]) }}
+            {% endif %}
+        {% endfor %}
+
+        {{ form_end(form_associate) }}
+    </div>
+{% endmacro %}

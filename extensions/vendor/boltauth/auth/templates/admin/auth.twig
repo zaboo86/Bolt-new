@@ -1,0 +1,145 @@
+{# Page: NavSecondary > Extensions > Auth #}
+
+{% extends "@bolt/_base/_page-nav.twig" %}
+
+{% block page_nav 'Extensions' %}
+
+{% block page_title %}
+    {{ __('Auth') }}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+    Manage Site Auth Roles
+{% endblock page_subtitle %}
+
+{# clear default messages, because we use them in a different spot, in this template #}
+{% block messages "" %}
+
+{% macro column_toggle_ref(queries, column) %}
+    {% if queries.orderBy == column %}
+        {% if queries.order == 'desc' %}
+            {% set order = 'asc' %}
+        {% else %}
+            {% set order = 'desc' %}
+        {% endif %}
+        {{ path(app.request.attributes.get('_route'), app.request.query.all|merge({ orderby: column, order: order })) }}
+    {% else %}
+        {{ path(app.request.attributes.get('_route'), app.request.query.all|merge({ orderby: column, order: 'desc' })) }}
+    {% endif %}
+{% endmacro %}
+
+{% block page_main %}
+
+    <div class="row auth-bolt-container">
+        <div class="col-md-9">
+
+            {% include '_sub/_messages.twig' %}
+
+            <section class="auth-container">
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <h3>{{ __('Auth') }}</h3>
+                    </div>
+                    <div class="col-md-3">
+                        {{ include('@AuthAdmin/_search.twig') }}
+                    </div>
+                </div>
+
+                <div class="auth-list">
+
+                    <table class="dashboardlisting table" id="auth-table">
+                        <colgroup>
+                            <col class="auth-column-check">
+                            <col class="auth-column-displayname">
+                            <col class="auth-column-email">
+                            <col class="auth-column-roles">
+                            <col class="auth-column-lastseen">
+                            <col class="auth-column-guid">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th><a href="{{ _self.column_toggle_ref(queries, 'displayname') }}">{{ __('Display Name') }}</a></th>
+                            <th><a href="{{ _self.column_toggle_ref(queries, 'email') }}">{{ __('Email') }}</a></th>
+                            <th>{{ __('Roles') }}</th>
+                            <th>{{ __('Last Seen') }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody class="auth-list-items">
+                        {% for auth in auth %}
+                            {% set lastseen = auth_lastseen(auth.guid) %}
+
+                            {% if auth.enabled %}{% set enabled = '' %}{% else %}{% set enabled = 'strikeout' %}{% endif %}
+                            <tr class="{{ enabled }}" id="auth-auth[{{ auth.guid }}]">
+                                <td class="auth-cb">
+                                    <label>
+                                        <input type="checkbox"
+                                               id="form_auth_{{ loop.index0 }}"
+                                               name="form[auth][]"
+                                               value="{{ auth.guid }}">
+                                    </label>
+                                </td>
+                                <td class="auth-displayname"><a href="auth/edit/{{ auth.guid }}">{{ auth.displayname }}</a></td>
+                                <td class="auth-email">{{ auth.email }}</td>
+                                <td class="auth-roles">
+                                    {% for role in auth.roles|default(['-']) %}
+                                        {{ role }}<br>
+                                    {% endfor %}
+                                </td>
+                                <td class="auth-lastseen">
+                                    <time class="buic-moment" data-bolt-widget="buicMoment" datetime="{{ lastseen }}">{{ lastseen }}</time>
+                                </td>
+                                <td class="auth-guid">
+                                    {% spaceless %}
+                                        <span class="info-pop pull-right" style="background-color: inherit !important;"
+                                              data-content="{{ auth.guid }}"
+                                              data-html="false" >
+                                              <i class="fa fa-user-md"></i>
+                                        </span>
+                                    {% endspaceless %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <hr />
+
+            {% include '@bolt/components/pager.twig' with { 'context': pager } only %}
+        </div>
+
+        {{ include('@AuthAdmin/_aside.twig') }}
+
+    </div>
+
+    <script>
+        var baseurl = "{{ paths.bolt|trim('/', 'right') }}{{ authBaseUrl }}/action";
+
+        var active_console;
+        var active_interval;
+
+        jQuery(document).ready(function($) {
+            var boltExt = new AuthAdmin();
+            boltExt.setMessage('useradd', '{{__('Adding user...')}}' );
+            boltExt.setMessage('userdel', '{{__('Removing user(s)...')}}');
+            boltExt.setMessage('userenable', '{{__('Enabling user(s)...')}}' );
+            boltExt.setMessage('userdisable', '{{__('Disabling user(s)...')}}');
+            boltExt.setMessage('roleadd', '{{__('Adding role...')}}');
+            boltExt.setMessage('roledel', '{{__('Removing role...')}}');
+            boltExt.setMessage('authnotsellHeader', '{{__('Nothing Selected!')}}');
+            boltExt.setMessage('authnotsell', '{{__('You need to choose a auth.')}}');
+            boltExt.setMessage('rolenotsellHeader', '{{__('None role Selected!')}}');
+            boltExt.setMessage('rolenotsell', '{{__('You need to choose a role.')}}');
+            boltExt.setMessage('autherrorHeader', '{{__('Error!')}}');
+            boltExt.setMessage('autherror', '{{__('The server returned an error.')}}');
+            boltExt.setMessage('confirmdeleteHeader', '{{__('Confim deletion')}}');
+            boltExt.setMessage('confirmdelete', '{{__('Are you sure you want to delete these accounts?')}}');
+            boltExt.setMessage('confirmdeleteButton', '{{__('Yes!')}}');
+        });
+    </script>
+
+{% endblock page_main %}

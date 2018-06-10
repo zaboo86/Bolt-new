@@ -1,0 +1,34 @@
+{
+    "bolt/boltforms": {
+        "name": "bolt/boltforms",
+        "path": "vendor/bolt/boltforms",
+        "webPath": "extensions/vendor/bolt/boltforms",
+        "class": "Bolt\\Extension\\Bolt\\BoltForms\\BoltFormsExtension",
+        "constraint": "^3.0",
+        "valid": true
+    },
+    "bolt/email-spooler": {
+        "name": "bolt/email-spooler",
+        "path": "vendor/bolt/email-spooler",
+        "webPath": "extensions/vendor/bolt/email-spooler",
+        "class": "Bolt\\Extension\\Bolt\\EmailSpooler\\EmailSpoolerExtension",
+        "constraint": "^3.3",
+        "valid": true
+    },
+    "boltauth/auth": {
+        "name": "boltauth/auth",
+        "path": "vendor/boltauth/auth",
+        "webPath": "extensions/vendor/boltauth/auth",
+        "class": "Bolt\\Extension\\BoltAuth\\Auth\\AuthExtension",
+        "constraint": "^3.2",
+        "valid": true
+    },
+    "cdowdy/html5video": {
+        "name": "cdowdy/html5video",
+        "path": "vendor/cdowdy/html5video",
+        "webPath": "extensions/vendor/cdowdy/html5video",
+        "class": "Bolt\\Extension\\cdowdy\\html5video\\Html5VideoExtension",
+        "constraint": "^3.0",
+        "valid": true
+    }
+}

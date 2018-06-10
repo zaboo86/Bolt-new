@@ -1,0 +1,38 @@
+# This file defines the menus on the website. See the documentation for
+# details: https://docs.bolt.cm/configuration/menus
+
+main:
+      
+    - label: Home
+      title: This is the first menu item.
+      path: homepage
+      class: first
+    - label: Studiengang
+      path: entry/1
+      submenu:
+          - label: AI
+            path: entry/2
+          - label: MI
+            class: menu-item-class
+            path: entry/3
+          - label: EW
+            path: entry/4
+          - label: BWL
+            class: sub-class
+            path: page/3
+    - label: All pages
+      path: pages/
+      class: last
+
+somevalue:
+      type: select
+      values: [ none, foo, bar ]
+
+
+label: Kategorie
+path: pages
+list: 
+    contenttype: pages
+    taxonomytype: fachrichtung
+    taxonomy: main
+    class: last

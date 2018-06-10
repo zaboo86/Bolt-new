@@ -1,0 +1,10 @@
+{% setcontent entries = "entries/latest/3" %}
+{% set relatedrecords = record.related()[0] %}    
+{% setcontent quiz='create_quizes' where{tutorialid:relatedrecords.id} %}
+    {% if quiz is not empty %}
+        <ul>
+        {% for related in quiz %}
+          <li class="list-group-item nav-item" style="padding:0px;"><a href="{{ related.link }}" class="nav-link"><span style="margin:0px;padding:0px;">{{ related.title }}</span></a></li>
+        {%  endfor %}
+        </ul>
+    {% endif %}

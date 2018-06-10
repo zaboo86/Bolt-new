@@ -1,0 +1,61 @@
+<body id="login">
+    <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-search" style="padding:15px;margin-left:40px;margin-right:40px;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-capitalize" href="{{ path('homepage') }}" style="margin:0px;padding:0px;">Independent Tutorials</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1" style="padding:0px;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto" style="margin:0px;">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-capitalize" href="/page/about-us">About Us</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-capitalize" href="/">News</a>
+                    </li>
+                    {% if auth_has_role('Tutor') %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Tutorial</a>
+                        <div class="dropdown-menu" role="menu" style="margin-right:0px;margin-top:0px;margin-left:-35px;padding-left:4px;">
+                            <a class="dropdown-item" role="presentation" style="margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:4px;">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-light" href="/page/submited_tutorials" >Submitted Tutorials</a> <br>
+                                    </div>
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-light" href="/page/my_tutorials" >Created Tutorials  </a>
+                                </div>           
+                            </a> 
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-capitalize" href="/page/my_tutorials">Tutorials</a>
+                    </li>
+                    {% endif %}
+                    {% if is_auth() %} {% set auth = auth() %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">{{ auth.displayname }}</a>
+                        <div class="dropdown-menu" role="menu" style="margin-right:0px;margin-top:0px;margin-left:-35px;padding-left:4px;">
+                            <a class="dropdown-item" role="presentation" style="margin-left:0px;padding-left:0px;padding-right:0px;padding-bottom:4px;">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-light" href="/page/edit_Profile" >Profile</a>
+                                    <a class="btn btn-light" href="{{auth_link_auth_logout()}}" >Logout</a>
+                                </div>
+                                <a class="label-link" href="/page/test">Feedback</a>
+                            </a>
+                        </div>
+                    </li>
+                   {% else %}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Sign In</a>
+                                <div class="dropdown-menu" role="menu" style="margin-right:0px;margin-top:2px;margin-left:-150px;">
+                                    <a class="dropdown-item" role="presentation">
+                                        {{ auth_auth_login()}}
+                                        <a class="btn btn-light" href="/page/Registration">Registration</a>
+                                        <a class="btn btn-light" href="{{ auth_link_auth_reset() }}">Forgot password?</a>
+                                    </a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                        </div>

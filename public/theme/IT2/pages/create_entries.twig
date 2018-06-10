@@ -1,0 +1,17 @@
+{% extends 'partials/_master.twig' %}
+{% block main %}
+    <div style="margin-top:0px;padding-bottom:15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="col-md-8 offset-md-2">
+                            <h3>Eintrag erstellen:</h3>
+                        </div>
+                        {{boltforms('create_entries')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock main %}

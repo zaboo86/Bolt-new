@@ -1,0 +1,81 @@
+{# Page: NavSecondary > Extensions > Auth #}
+
+{% extends "_base/_page-nav.twig" %}
+
+{% block page_nav 'Extensions' %}
+
+{% block page_title %}
+    {{ __('Auth') }}
+{% endblock page_title %}
+
+{% block page_subtitle %}
+    Editing Auth Profile: {{ form.vars.value.displayname|default('New User') }}
+{% endblock page_subtitle %}
+
+{# clear default messages, because we use them in a different spot, in this template #}
+{% block messages "" %}
+
+{% block page_main %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <div class="row">
+        <h4>Edit New Profile</h4>
+    </div>
+
+    <div class="row profile">
+
+        <div class="col-md-9">
+            {% block profile %}
+                {{ form_start(form_profile_edit, {'attr': {'id': 'profile', 'class': 'row'}, 'action': path('authAdminUserAdd') }) }}
+
+                {{ form_label(form_profile_edit.displayname, null, {'label_attr': {'class': 'main col-xs-12'}}) }}
+                {{ form_errors(form_profile_edit.displayname) }}
+                {{ form_widget(form_profile_edit.displayname, { 'attr': {'class': 'form-control large'} }) }}
+
+                {{ form_label(form_profile_edit.email, null, {'label_attr': {'class': 'main col-xs-12'}}) }}
+                {{ form_errors(form_profile_edit.email) }}
+                {{ form_widget(form_profile_edit.email, { 'attr': {'class': 'form-control large'} }) }}
+
+                {{ form_label(form_profile_edit.password.first, null, {'label_attr': {'class': 'main col-xs-12'}}) }}
+                {{ form_errors(form_profile_edit.password.first) }}
+                {{ form_widget(form_profile_edit.password.first, { 'attr': {'class': 'form-control large', 'autocomplete': 'new-password'} }) }}
+
+                {{ form_label(form_profile_edit.password.second, null, {'label_attr': {'class': 'main col-xs-12'}}) }}
+                {{ form_errors(form_profile_edit.password.second) }}
+                {{ form_widget(form_profile_edit.password.second, { 'attr': {'class': 'form-control large', 'autocomplete': 'new-password'} }) }}
+
+                {% include '@AuthAdmin/profile_edit_meta.twig' ignore missing %}
+
+                <br>
+            <div class="hidden">
+                {{ form_row(form_profile_edit.submit) }}
+            </div>
+                {{ form_end(form_profile_edit) }}
+            {% endblock profile %}
+        </div>
+
+        <aside class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-cog fa-fw"></i> Actions
+                </div>
+
+                <div class="panel-body">
+                    {% include '@AuthAdmin/_aside-save.twig' %}
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><i class="fa fa-cog fa-fw"></i>Linked Social Media Accounts</div>
+
+                <div class="panel-body">
+                    <ul>
+                        {%- for provider in auth_providers() %}
+                            <li><i class="fa fa-{{ provider }}">  {{ provider|title }}</i></li>
+                        {% endfor -%}
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+{% endblock page_main %}

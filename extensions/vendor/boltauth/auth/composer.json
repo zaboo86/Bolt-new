@@ -1,0 +1,58 @@
+{
+    "name": "boltauth/auth",
+    "description": "Auth management for Bolt",
+    "type": "bolt-extension",
+    "keywords": [
+        "Facebook",
+        "GitHub",
+        "Google",
+        "login",
+        "auth",
+        "oauth",
+        "profiles"
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "bolt/bolt": "^3.2",
+        "bolt/email-spooler": "^3.0",
+        "pagerfanta/pagerfanta": "^1.0",
+        "ramsey/uuid": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Svante Richter",
+            "email": "svante.richter@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "name": "bolt",
+            "type": "composer",
+            "url": "https://extensions.bolt.cm/satis/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bolt\\Extension\\BoltAuth\\Auth\\": "src",
+            "League\\OAuth2\\Client\\": "lib/League/OAuth2/Client/",
+            "Stevenmaguire\\OAuth2\\Client\\": "lib/League/OAuth2/Client/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bolt\\Extension\\BoltAuth\\Auth\\Tests\\": "tests",
+            "Bolt\\Tests\\": "vendor/bolt/bolt/tests/phpunit/unit/"
+        }
+    },
+    "extra": {
+        "bolt-assets": "web",
+        "bolt-class": "Bolt\\Extension\\BoltAuth\\Auth\\AuthExtension",
+        "bolt-icon": "fingerprint-user.svg.png"
+    }
+}

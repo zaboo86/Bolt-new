@@ -1,0 +1,56 @@
+{% set relatedrecords = record.related('entries') %}
+{% if relatedrecords is empty %}
+{% set relatedrecords2 = record.related('tutorials')[0] %}
+{% setcontent relatedrecords= 'entries' where {tutorialid: relatedrecords2.id} %}
+{% endif %}
+    {% set relatedrecords2 = record.related('create_quizes') %}
+{% if relatedrecords2 is empty %}
+{% set relatedrecord = record.related('tutorials')[0] %}
+{% setcontent relatedrecords2= 'create_quizes' where {tutorialid: relatedrecord.id} %}
+{% endif %}
+     {% set relatedrecords3 = record.related('tutorials') %}
+        {% if relatedrecords3 is empty %}
+{% set relatedrecort= record.related('tutorials')[0] %}
+{% setcontent relatedrecords3= 'tutorials' where {id: relatedrecort.tutorialid} %}
+{% endif %}
+{%set value=1 %}
+{%set value2=1 %}
+{%set value3=1 %}
+{% block main %}   
+
+{% if relatedrecords is not empty or  relatedrecords2 is not empty or relatedrecords3 is not empty   %}
+ 
+<div style="margin-top:0px;padding-bottom:15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs ml-auto" id="navTutorial" data-spy="affix" data-offset-top="70px">
+                            {% for related in relatedrecords %}
+                                {% if value == 1 %}
+                        <li class="nav-item"><a class="nav-link text-capitalize" href="{{related.link}}">Lernmaterialien</a></li>
+                        {% endif %}
+                        {% set value=value +1 %}
+                        {% endfor %}
+                          {% if auth_has_role('Member') or auth_has_role('Tutor') %}
+                        <li class="nav-item"><a class="nav-link text-capitalize" href="/page/chat-1">Diskussionen</a></li>
+                        {% endif %}
+                        <li class="nav-item"><a class="nav-link text-capitalize" href="overview_tut.html">Fortschritt</a></li>
+                         {% for related3 in relatedrecords3 %}
+                        {% if value3 == 1 %}
+                        <li class="nav-item"><a class="nav-link text-capitalize" href="{{related3.link}}">Kursdetails</a></li>
+                         {% endif %}
+                         {% set value3=value3 +1 %}
+                        {% endfor %} 
+                        {% for related2 in relatedrecords2 %}
+                        {% if value2 == 1 %}
+                        <li class="nav-item"><a class="nav-link text-capitalize" href="{{related2.link}}">Recap</a></li>
+                            {% endif %}
+                         {% set value2=value2 +1 %}
+                        {% endfor %} 
+                 {% endif %}               
+                  </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+{% endblock %}

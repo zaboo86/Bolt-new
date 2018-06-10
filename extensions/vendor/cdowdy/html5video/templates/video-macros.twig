@@ -1,0 +1,106 @@
+{# =================== VIDEO ATTRIBUTES ============================================== #
+    gather video attributes like
+    * autolplay
+    * controls
+    * muted
+    * loop
+# ================================================================================= #}
+{% macro vidAttribs( attributes ) %}
+{% spaceless %}{% for attrib in attributes %} {{ attrib }}{% endfor %}{% endspaceless %}
+{% endmacro vidAttribs %}
+
+
+{# =================== VIDEO HTML CLASS AND VIDEO ID  =================================== #
+    adds a class to the video element for styling and an ID for styling/JavaScript Hook
+# ================================================================================= #}
+{% macro styleAttrib( class ) %}
+{% if class %}{% spaceless %} class="{% for c in class %} {{ c }}{% endfor %}"{% endspaceless %}{% endif %}
+{% endmacro styleAttrib %}
+
+
+{% macro vidID( video_id ) %}
+{% spaceless %}{% if video_id %} id="{{ video_id }}"{% endif %}{% endspaceless %}
+{% endmacro vidID %}
+
+{# ==================== VIDEO POSTER ================================================ #
+    Macro for the video poster
+# ================================================================================ #}
+{% macro vidPoster( poster ) %}
+{% spaceless %}{% if poster %} poster="{{ poster }}"{% endif %}{% endspaceless %}
+{% endmacro vidPoster %}
+
+
+{# ==================== VIDEO PRELOAD ================================================ #
+    gather the preload options if present and create the sting
+# ================================================================================ #}
+{% macro vidPreload( preload ) %}
+{% spaceless %}{% if preload %}preload="{{ preload }}"{% endif %}{% endspaceless %}
+{% endmacro vidPreload %}
+
+
+{# ==================== VIDEO DIMENSIONS ============================================= #
+    get the width and height if set
+# ================================================================================ #}
+
+{% macro vidDimensions( widthHeight ) %}
+{% spaceless %}{% if widthHeight %}width="{{ widthHeight[0] }}" height="{{ widthHeight[1] }}"{% endif %}{% endspaceless %}
+{% endmacro vidDimensions %}
+
+
+{# ==================== VIDEO ATTRIBUTES AND SINGLE SOURCE BUILD ========================= #
+    Combine the video attributes ( macro vidAttribs ), video preload ( macro vidPreload), video dimenensions
+    (macro vidDimensions) and the single source video file
+# ================================================================================ #}
+{% macro attribBuild( attributes, preload, poster, widthHeight, fragment ) %}
+    {% import _self as build %}{% spaceless %}
+{{ build.vidAttribs(attributes) }} {{ build.vidPreload(preload) }} {{ build.vidPoster(poster) }} {{ build.vidDimensions(widthHeight) }}{% endspaceless %}
+{% endmacro attribBuild %}
+
+
+
+{# ==================== VIDEO MEDIA FRAGMENT  ========================================= #
+    get the media fragments if they are set in the config or template
+# ================================================================================ #}
+{% macro mFrag( fragment ) %}
+{% spaceless %}{% if fragment %}
+#t={% spaceless %}{% for frag in fragment %}{{ frag }}{% if not loop.last  %},{% endif %}{% endfor %}{% endspaceless %}{% endif %}
+{% endspaceless %}
+{% endmacro mFrag %}
+
+
+{# ==================== VIDEO Tracks ================================================= #
+    get the video subtitles and captions
+# ================================================================================ #}
+{% macro vidTracks( tracks ) %}{% if tracks %}
+{% for key, value in tracks %}
+ <track label="{{ value.label }}" kind="{{ value.kind }}" srclang="{{ value.srclang }}" src="{{ value.src }}" {% if value.default %} default {% endif %}>{% endfor %}
+{% endif %}
+{% endmacro vidTracks %}
+
+
+
+
+{# ==================== VIDEO Sources ================================================ #
+    Macro for multiple source videos
+# ================================================================================ #}
+{% macro multiVid( videoSources, fragment ) %}
+    {% import _self as mediaFrag %}
+{% for video, type in videoSources %}
+<source src="{{ video }}{{ mediaFrag.mFrag(fragment) }}" type="video/{{ type }}" >
+{% endfor %}
+{% endmacro multiVid %}
+
+
+
+
+{# =================== VIDEO TAG BODY BUILDING ======================================== #
+ #
+ # Build the body of the video tag. Bring in tracks if they are there and source tags if there is multiple sources
+ #
+ # ================================================================================ #}
+{% macro videoBodyBuild( videoSources, tracks, fragment ) %}
+    {% import _self as body %}
+{{ body.multiVid( videoSources, fragment ) }}
+{{ body.vidTracks( tracks ) }}
+{% endmacro videoBodyBuild %}
+

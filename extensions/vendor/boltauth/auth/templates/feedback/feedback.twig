@@ -1,0 +1,55 @@
+{#
+ # Warning: Calling .get() will flush the feedback message queue. Which is what
+ #          you want most of the time, but if you're doing something tricky…
+ #
+ # If you wish to get them without flush, call .peek() instead of .get()
+ #
+ # Passed in variables:
+ #   * feedback             — Feedback  Auth feedback service (Bolt\Extension\BoltAuth\Auth\Feedback)
+ #     * get                — array     Return, and remove from queue, messages pending display
+ #     * poke               — array     Return, and preserve queing of, messages pending display
+ #}
+
+{% set feedback = feedback.get|default(null) %}
+{% if feedback %}
+    <div class="row">
+        <div class="small-12 columns">
+
+            <div class="panel auth-feedback">
+                {% if feedback.debug|default(null) %}
+                    <div class="auth-messages-debug">
+                        <h5>{{ __('Debug Messages') }}:</h5>
+                        <ul class="auth-feedback-messages">
+                            {% for message in feedback.debug %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if feedback.error|default(null) %}
+                    <div class="auth-messages-error">
+                        <h5>{{ __('Error Messages') }}:</h5>
+                        <ul class="auth-feedback-messages">
+                            {% for message in feedback.error %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if feedback.info|default(null) %}
+                    <div class="auth-messages-info">
+                        <h5>{{ __('Informational Messages') }}:</h5>
+                        <ul class="auth-feedback-messages">
+                            {% for info in feedback.info %}
+                                <li>{{ info }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endif %}

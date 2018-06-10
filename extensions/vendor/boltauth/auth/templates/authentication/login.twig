@@ -1,0 +1,54 @@
+{#
+ # Passed in variables:
+ #
+ #   * twigparent           — string    Template name to inherit from
+ #   * form_login_oauth     — FormView  OAuth login form (Symfony\Component\Form\FormView)
+ #   * form_login_password  — FormView  Password login form (Symfony\Component\Form\FormView)
+ #   * feedback             — Feedback  Informational, error, and debug feedback messages. @see feedback/feedback.twig
+ #   * templates            — array
+ #     * feedback           — string    Feedback messages template name
+ #   * providers            — array     Authentication providers enabled in Auth configuration
+ #}
+{% extends twigparent %}
+
+{% block login %}
+
+    <div class="container">
+        <div class="form-control input-block">
+
+            {% if providers.local is defined %}
+                {{ _self.password_login(form_login_password) }}
+            {% endif %}
+
+            {{ _self.oauth_login(form_login_oauth, providers) }}
+        </div>
+    </div>
+{% endblock login %}
+
+{% macro password_login(form_login_password) %}
+    <div class="">
+        {{ form_start(form_login_password) }}
+<br>
+        {{ form_row(form_login_password.email) }}
+        {{ form_row(form_login_password.password) }}
+
+        {{ form_row(form_login_password.submit, {'attr': {'class': 'btn btn-primary btn-block'}}) }}
+
+        {{ form_end(form_login_password) }}
+    </div>
+{% endmacro %}
+
+
+{% macro oauth_login(form_login_oauth, providers) %}
+    <div class="small-6 columns auth-login-password">
+        {{ form_start(form_login_oauth) }}
+
+        {% for provider in providers|keys %}
+            {% if provider != 'local' %}
+                {{ form_row(form_login_oauth[provider]) }}
+            {% endif %}
+        {% endfor %}
+
+        {{ form_end(form_login_oauth) }}
+    </div>
+{% endmacro %}

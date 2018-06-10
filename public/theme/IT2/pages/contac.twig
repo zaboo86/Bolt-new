@@ -1,0 +1,5 @@
+{% extends 'partials/_master.twig' %}
+{% set auth= auth() %}
+{% block main%}
+ {{boltforms('create_tutorial')}}
+{% endblock main %}

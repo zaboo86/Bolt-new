@@ -1,0 +1,18 @@
+{% set auth=auth() %}
+{% set relation = record.related('create_quizes') %}
+{% setcontent relatedrecords = 'create_quizes'  }   %}
+{% for related in relatedrecords %}
+{{related.id}}
+{{auth.guid}}
+<p> Question: </p>
+{{related.question}}
+<p> Answer 1: </p> 
+{{related.answer1}}
+<p> Answer 2: </p> 
+{{related.answer2}}
+<p> Answer 3: </p> 
+{{related.answer3}}
+<p> Answer 4: </p> 
+{{related.answer4}}
+{{boltforms('quiz-answer')}}
+  {% endfor %}

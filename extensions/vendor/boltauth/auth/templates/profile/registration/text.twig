@@ -1,0 +1,18 @@
+{#
+ # Passed in variables:
+ #   * name                 — string    Display name of the newly registered user
+ #   * email                — string    Email address of the newly registered user
+ #   * link                 — string    Account verification URL
+ #   * auth               — array     Auth data:
+ #     * guid               — string    GUID (unique ID)
+ #     * email              — string    Email address
+ #     * displayname        — string    Public display name
+ #     * enabled            — boolean   True if auth account is enabled
+ #     * verified           — boolean   True if auth account is verified
+ #     * roles              — array     Roles assigned to auth
+ #}
+{{ __('Dear') }} {{ name }},
+
+{{ __('Thank you for registering on') }} {{ app.config.get('general/branding/name') }}.
+
+{{ __('Please confirm your email by') }} {{ __('following this link') }}: {{ link }}
