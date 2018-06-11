@@ -1,4 +1,9 @@
+{#In dieser Datei wird das formular zur Zuordnung von Einträgen zu den Tutorien eingebunden#}
+{#Die Datei erbt an dieser Stellen von der mastr.twig#}
 {% extends 'partials/_master.twig' %}
+{#Hier beginnt der main Block#}
 {% block main %}
+{#An dieser Stelle wird das Formular eingebunden#}
 {{ boltforms('relation')}}
+{#Hier endet der Main block#}
 {% endblock %}

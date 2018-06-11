@@ -1,3 +1,4 @@
+{# Die Record_Meta Datei dient zur erfassung der Meta-Daten, unter anderen die Zeiten der Homepage #}
 <p class="meta is-hidden-touch">
     {% if record.link() and (record.link != global.request.server.get('REQUEST_URI')) %}
     <a href="{{ record.link() }}" class="button is-link {% if extended|default() %}is-outlined{% endif %}">
@@ -8,6 +9,7 @@
         {{ __('general.phrase.read-more') }}
     </a>
     {% endif %}
+{# Ein link zum direkten Editieren für die Admins von Erstellten Einträgen  #}
     {% if record.editlink() %}
         <span class="edit-link">
             <a href="{{ record.editlink() }}" class="button is-info is-outlined">

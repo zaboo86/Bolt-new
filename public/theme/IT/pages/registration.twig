@@ -1,4 +1,8 @@
-{% extends 'partials/_master.twig' %} {% block main %}
+{#In dieser Datei wird das Template zur registration bei Auth bereit gestellt#}
+{#Die Datei erbt an dieser Stelen von der master.twig#}
+{% extends 'partials/_master.twig' %} 
+{#Hier beginnt der main Block#}
+{% block main %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
@@ -6,6 +10,7 @@
         <div class="container">
             <div class="row register-form">
                 <div class="col-md-8 offset-md-2">
+                    {#Es wird an dieser Stelle das Template von Auth eingebunden#}
                     {{ auth_profile_register() }}
                 </div>
             </div>
@@ -20,4 +25,5 @@
         </div>
     </div>
 </body>
+{#Hier endet der Main block#}
 {% endblock main %}

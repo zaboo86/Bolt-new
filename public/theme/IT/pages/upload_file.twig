@@ -1,4 +1,7 @@
+{#In dieser Datei wird das Formular zum Uploaden von Dateien eingebunden#}
+{#Die Datei erbt an dieser Stellen von der master.twig#}
 {% extends 'partials/_master.twig' %}
+{#Hier begint der main Block#}
 {% block main %}
 <div style="margin-top:0px;padding-bottom:15px;">
         <div class="container">
@@ -8,10 +11,12 @@
                            <div class="col-md-8 offset-md-2">                 
      <h3>Datein zum Kurs Hochladen:</h3><br><br>
                             </div>
-                {{boltforms('upload_page')}}
+               {# An dieser Stelle wird das Formular eingebunden #}
+                        {{boltforms('upload_page')}}
                     </div>
                 </div>
             </div>
         </div>
 </div>
+{#Hier endet der Main block#}
 {% endblock main %}

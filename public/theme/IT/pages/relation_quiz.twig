@@ -1,4 +1,9 @@
+{#In dieser Datei wird das Formular zur Verknüpfung von Quizzes eingebunden#}
+{#Die Datei erbt an dieser Stellen von der master.twig#}
 {% extends 'partials/_master.twig' %}
+{#Hier beginnt der main Block#}
 {% block main %}
+{#An dieser Stelle wir das Formular eingebunden#}
 {{boltforms('relation_quiz_tutorial')}}
+{#Hier endet der Main block#}
 {% endblock %}

@@ -447,7 +447,19 @@ upload:
     singular_name: upload
     fields:
         pdf:
-            type: file
+            type: filelist
         tutorialid:
             type: hidden
     searchable: false
+q_answers:
+    name: q_answers
+    singular_name: q_answer
+    fields:
+        answer:
+            type: select
+            values: {'Answer1':'answer1','Answer2':'answer2','Answer3':'answer3','Answer4':'answer4'}
+        usrname:
+            type: hidden
+            
+        slugquiz:
+            type: hidden

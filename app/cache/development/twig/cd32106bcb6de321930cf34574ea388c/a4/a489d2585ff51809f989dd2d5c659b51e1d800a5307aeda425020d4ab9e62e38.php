@@ -42,7 +42,7 @@ class __TwigTemplate_89f8677ae29c6491b64f62cf263c1214845e0ac210697799f3cecd20798
             throw $e;
         }
 
-        // line 1
+        // line 3
         echo "<div class=\"footer-clean\">
             <footer>
                 <div class=\"container\">
@@ -90,7 +90,7 @@ class __TwigTemplate_89f8677ae29c6491b64f62cf263c1214845e0ac210697799f3cecd20798
 
     public function getDebugInfo()
     {
-        return array (  46 => 1,);
+        return array (  46 => 3,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -103,7 +103,9 @@ class __TwigTemplate_89f8677ae29c6491b64f62cf263c1214845e0ac210697799f3cecd20798
 
     public function getSourceContext()
     {
-        return new Twig_Source("<div class=\"footer-clean\">
+        return new Twig_Source("{# Der Footer wird erstellt #}
+{# Dem Footer haben wir für unser Projekt zurzeit noch keine relevanz geschenkt und dient nur als deko #}
+<div class=\"footer-clean\">
             <footer>
                 <div class=\"container\">
                     <div class=\"row justify-content-center\">

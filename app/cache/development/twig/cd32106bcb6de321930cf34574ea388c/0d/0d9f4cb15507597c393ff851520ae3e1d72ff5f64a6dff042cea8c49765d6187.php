@@ -42,7 +42,7 @@ class __TwigTemplate_7d6e01a446012b800c3a51b9446a660555fc7ce7a17d340e56e57e439d6
             throw $e;
         }
 
-        // line 1
+        // line 2
         echo "Viel spaß mit den folgenden Tutorials.
 ";
         
@@ -57,7 +57,7 @@ class __TwigTemplate_7d6e01a446012b800c3a51b9446a660555fc7ce7a17d340e56e57e439d6
 
     public function getDebugInfo()
     {
-        return array (  46 => 1,);
+        return array (  46 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -70,7 +70,8 @@ class __TwigTemplate_7d6e01a446012b800c3a51b9446a660555fc7ce7a17d340e56e57e439d6
 
     public function getSourceContext()
     {
-        return new Twig_Source("Viel spaß mit den folgenden Tutorials.
+        return new Twig_Source("{#in dieser Datei steht der Begruessungstext#}
+Viel spaß mit den folgenden Tutorials.
 ", "pages/index_text.twig", "");
     }
 }

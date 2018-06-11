@@ -1,24 +1,49 @@
+{# Erbt von der Master #}
 {% extends 'partials/_master.twig' %}
-{% block main %} {% if record is defined %} 
+
+{# Der Main-Block wird definiert, wo die anzuzeigenden Elemente dargestellt werden #}
+{% block main %}
+
+{# Überprüft ob eine Datenbank hinterlegt ist #}
+{% if record is defined %} 
+
+{# Fügt den Sub-Head zu dieser Seite hinzu #}
 {{include('partials/_header.twig')}} 
+
+{# Die letzten seks Tutorials werden aus der Datenbank geholt #}
 {% setcontent reponitems = "reponses/latest/6" %} 
 {% setcontent pageitems = "tutorial/latest/6" %}
+
 <div class="row articles">
-    {% for pageitem in pageitems %}
+    
+{# Eine Schleife, die alle seks Tutorials mit den dazugehörigen Inhalt auflistet #}
+    {% for pageitem in pageitems | reverse %}
     <div class="col-sm-6 col-md-4 item">
+
+{# Wenn ein Bild vorhanden ist, wird es an dieser Stelle eingebuden,
+sowie eine verlinkung beim anklicken des Bildes zum dazugehörigem Tutorial #}
         {% if pageitem.image is not empty %}
         <a href="{{ pageitem.link }}">
             <img src="/thumbs/91x91c/2018-06/{{ pageitem.image|default() }}">
         </a>
         {% endif %}
         <h3 class="name">
+
+{# Der zugewiesene Titel des Tutorials wird mit einer Verlinkung zum Tutorial eingebuden #}
             <a href="{{pageitem.link}}">{{ pageitem.title }}</a>
         </h3>
+
+{# Ein kurzer ausschnitt aus dem Body des Tutorials wird angezeigt #}
         <p class="description">{{ pageitem.excerpt }}</p>
+
+{# Ein Button mit einer direkten Verlinkung zum Tutorial wird eingebunden #}
         <a href="{{ pageitem.link }}" class="action">
             <i class="fa fa-arrow-circle-right"></i>
         </a>
         <p class="meta">
+
+{# Für Admins eine weitere Funktion, damit sie sehen können wann als letztes etwas geändert wurde
+und einen direkten Edit Button, bei bearbeitungs bedarf #} 
             <a href="{{ pageitem.link }}">Link</a>
             - Posted by {{ pageitem.user.displayname }} on {{ pageitem.datecreated|date("M d, ’y")}}</p>
     </div>
@@ -27,4 +52,7 @@
     {{reponitem.title}} 
     {% endfor %}
 </div>
-{% endif %} {% endblock main %}
+{% endif %}
+
+{# Der Main-Block wird wieder geschlossen #}
+{% endblock main %}

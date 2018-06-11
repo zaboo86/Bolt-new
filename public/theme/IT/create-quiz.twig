@@ -1,50 +1,87 @@
-{% extends 'partials/_master.twig' %} 
-{% block main %} 
-{% set auth=auth() %} 
-{% set guid=auth.guid %} 
-{% set value=1 %} {%
-set temp = record.related()[0] %}
-{% set slug= record.slug %} 
-{% setcontent relatedrecords = 'create_quizes'where { tutorialid: temp.id } %}
-<div style="margin-top:0px;padding-bottom:15px;">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <ul class="nav nav-tabs ml-auto" id="navTutorial" data-spy="affix" data-offset-top="70px">
-                    {%include 'partials/_sub_head.twig'%}
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4" style="padding-right:15px;padding-left:25px;margin-left:0px;">
-                <aside id="aside" class="card-header" style="margin-right:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-                    <ul class="list-group nav nav-tabs card-header-tabs">
-                        {{ include('partials/_aside.twig') }}
-                    </ul>
-                </aside>
-            </div>
-            <div class="col-md-8">
-                <div class="card" style="margin-right:0px;margin-left:-15px;">
-                    <div class="card-body">
-                        {% for related in relatedrecords %} {% set slug2 =related.slug %} {% if slug == slug2 %}
-                        <h4 class="card-title">{{related.question}}</h4>
-                        <p> Question: </p>
-                        {{related.question}}
-                        <p> Answer 1: </p>
-                        {{related.answer1}}
-                        <p> Answer 2: </p>
-                        {{related.answer2}}
-                        <p> Answer 3: </p>
-                        {{related.answer3}}
-                        <p> Answer 4: </p>
-                        {{related.answer4}} {{boltforms('quiz-answer')}} {% endif %} {% endfor %}
-                        <br>
-                        <br> {% include 'partials/_record_meta.twig' with {'extended': true} %}
+{# Erbt von der Master #}
 
+{% extends 'partials/_master.twig' %}
+
+{# Der Main-Block wird definiert, wo die anzuzeigenden Elemente dargestellt werden #}
+{% block main %}
+
+{# Variablen werden gesetzt #}
+{% set auth=auth() %}
+{% set usr=auth.displayname %}
+{% set value=1 %}
+{% set temp = record.related()[0] %}
+{% set slug= record.slug %}
+{% setcontent relatedrecords = 'create_quizes'   where { tutorialid: temp.id  }  %}
+
+<div style="margin-top:0px;padding-bottom:15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-tabs ml-auto" id="navTutorial" data-spy="affix" data-offset-top="70px">
+                        
+{# Fügt den Sub-Head zu dieser Seite hinzu #}
+                    {%include 'partials/_sub_head.twig'%}
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" style="padding-right:15px;padding-left:25px;margin-left:0px;">
+                    <aside id="aside" class="card-header" style="margin-right:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+                        <ul class="list-group nav nav-tabs card-header-tabs">
+                            
+{# Die Seite-Bar wird hinzugefügt #}
+               {{ include('partials/_aside.twig') }} 
+                        </ul>
+                    </aside>
+                </div>           
+                <div class="col-md-8">
+                    <div class="card" style="margin-right:0px;margin-left:-15px;">
+                        <div class="card-body">
+{# Beschraenkt die Anzeige der zum Tutorial gehörenden Fragen auf eins #}
+{% for related in relatedrecords %}
+{% set slug2 =related.slug %}                          
+{% if slug == slug2 %}
+                            
+ {# Fragen und Antworten werden aus der DB abgefragt und angezeigt #}                          
+ <h3 class="card-title" style="margin-left:47%; margin-top: 2%;">{{related.question}}</h3>                                
+<h5 ><p> Question: </p> </h5>
+{{related.question}}<br><br>
+<h5><p> Answer 1: </p> </h5>
+{{related.answer1}}<br><br>
+<h5><p> Answer 2: </p> </h5>
+{{related.answer2}}<br><br>
+<h5><p> Answer 3: </p> </h5>
+{{related.answer3}}<br><br>
+<h5><p> Answer 4: </p> </h5>
+{{related.answer4}}
+{# Fügt die Anwort möglichkeiten hinzu #}               
+{{boltforms('quiz-answer',override= {
+                                         'usrname':{
+                                               options:{
+                                                      attr:{
+                                                         value: usr
+                                                         }
+                                                       }
+                                               },
+                                           'slugquiz': {
+                                                  options:{
+                                                         attr:{
+                                                            value: slug2
+                                                            }
+                                                         }
+                                                   }    
+                                        
+                                            })
+                            }} 
+                            
+                            {% endif %}                         
+                         {% endfor %}  
+<br><br>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>   
+{# Der Endblock wird geschlossen #}
 {% endblock main %}

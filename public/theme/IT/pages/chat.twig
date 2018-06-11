@@ -1,15 +1,21 @@
+{#In dieser Datei wird das Layout des Websocket Chat erstellt#}
+{# An dieser Stelle erbt die Datei von der master.twig #}
 {% extends 'partials/_master.twig' %}
+{# Es wird die Extention Auth eingebunden #}
 {% set auth=auth() %}
+{# Hier beginnt der Main Block in dem der spaetere Inhalt erscheint  #}
 {% block main %}
+{# Das script zur kommunikation mit dem Websocket Server wird eingebunden#}
 <script language="javascript" type="text/javascript" src="{{asset('assets/js/ws-client.js', 'theme')}}"></script>
 
 <div style="margin-top:0px;padding-bottom:15px;">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card" style="margin-right:0px;margin-left:-15px;">
+                <div class="card" style="margin-right:0px;margin-left:-15px;  margin:auto; width:65%;">
                     <div class="card-body" id="contentContainer">
-                        <h3>Chat</h3>
+                        <h3 style="margin-left:45%; ">Chat</h3>
+                        {#dem script wird zum einen die Emailadresse sowie den gewaelten 
+                        Benutzername uebergeben#}
                         <input type="hidden" id="mail" value="{{ auth.email }}">
                         <input type="hidden" id="name" value="{{ auth.displayname }}">
                         <input type="hidden" id="tutorium" value="everything">
@@ -22,9 +28,10 @@
                         </div>
                         <button class="btn btn-light d-block mx-auto" type="button" id="send" value="Absenden" style="margin-top:15px;">Absenden</button>
                     </div>
-                </div>
+                </div>  <input class="btn" style="margin-left:47%; margin-top: 2%;" type="button" onclick="history.back()" value="Back"/>
             </div>
         </div>
     </div>
 </div>
+{# hier endet der Main Block#}
 {% endblock %}

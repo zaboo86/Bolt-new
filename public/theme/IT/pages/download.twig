@@ -1,10 +1,63 @@
+{#In dieser Datei wird das Layout für die Download seite definiert,
+sodass die hochgeladenen Datein den einzelnen Tutorien zugeordnet werden#}
+{#Die Datei erbt an dieser Stellen von der master.twig#}
 {% extends 'partials/_master.twig' %}
+{#Hier beginnt der Main Block in dem der spaetere Inhalt angezeigt wird#}
 {% block main %}
-{% set id= record.id %}
-{% setcontent download='upload' where {tutorialid: id} %}
- {% if download is not empty %}
-   {% for down in download %}
-<a type='link' href='/files/2018-06/{{down.title}}'> {{down.title}} </a>
-{% endfor %}
+
+<div style="margin-top:0px;padding-bottom:15px;">
+    <div class="container">
+        <div class="row">
+                <div class="card" style="margin-right:0px;margin-left:0px; margin:auto; width:65%;">
+                    <div class="card-body" id="contentContainer">
+                        <h3 style="margin-left:25%; margin-top: 2%;"> Downloads zum Tutorial: </h3><br>
+{#An dieser Stelle bekommen wir alle Daten aus der Tabelle "tutorials" #}
+{% setcontent tutorial='tutorials' %}
+ {#Die einzelnen Values aus den Feldern der Tabelle "tutorials" 
+   werden in die Variable "tutorial" geschrieben   #}                       
+{% for tut in tutorial %}
+{% setcontent id= record.id %}
+{#An dieser Stelle bekommen wir alle Daten aus der Tabelle "uplaod" und
+  Filtern diese direkt nach den Tutorium Ids #}                        
+{% setcontent uploads='upload' where {tutorialid: tut.id} %}
+{#Wir setzen die Variable "value" auf 1#}
+{% set value = 1 %}
+{#Wir erzeugen eine Variable "bla" in der wir während eines Schleifendurchlaufs
+jeweils die aktuelle Tutorium Id abspeicher um ein mehrmaliges ausgeben des 
+Tutoriumtitels zu verhindern#}
+{% set bla= uploads[tut.id].tutorialid %}
+{#Die einzelnen Values aus den Feldern der Tabelle "uploads" 
+   werden in die Variable "upload" geschrieben   #} 
+{% for upload in uploads %}
+{% set dwload= upload %}
+{% set download=dwload.pdf %}
+{% set upid= upload.tutorialid %}
+{% if download is not empty %}
+
+{% for down in download %}
+        {% if upid == tut.id %}
+        {% if upid != bla  %}
+
+{% set value = value - 1 %}
+{% set bla = upid %}
+                      
 {% endif %}
+
+                {% if value == 1 %}
+                        
+                        <h5> {{tut.title}} </h5>
+                    {% set value = value + 1 %}
+
+                {% endif %}
+{# Hier wird ein Link zur jeweiligen Hochgeladenen Datei erzeugt#}
+            <a type='link' href='/files/2018-06/{{down.title}}'> {{down.title}} </a> <br>
+            {% endif %}
+                        
+        {% endfor %}                       
+{% endif %}         
+    {% endfor %}
+ <br>
+
+{% endfor %}
+    {#Hier endet der Main block#}                    --
 {% endblock %}

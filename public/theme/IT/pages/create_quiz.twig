@@ -1,4 +1,9 @@
+{#Die Datei erbt an dieser Stellen von der master.twig#}
 {% extends 'partials/_master.twig' %}
+{#Hier beginnt der main Block in dem später der Inhalt angezeigt wird#}
 {% block main %}
+{#An dieser Stelle wird das Formular zur Erstellung 
+von den Recapfragen eingebunden#}
 {{boltforms('create_quiz')}}
+{#Hier endet der Main block#}
 {% endblock main %}

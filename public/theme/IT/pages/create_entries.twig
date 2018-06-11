@@ -1,4 +1,7 @@
+{#In dieser Datei wird das Formular zur Erstellung von Eintraegen zur verfuegung gestellt #}
+{#Hier erbt die Datei von der master.twig#}
 {% extends 'partials/_master.twig' %}
+{#Hier beginnt der main Block#}
 {% block main %}
     <div style="margin-top:0px;padding-bottom:15px;">
         <div class="container">
@@ -8,10 +11,13 @@
                         <div class="col-md-8 offset-md-2">
                             <h3>Eintrag erstellen:</h3>
                         </div>
+                        {#An dieser Stelle wird das mit Boltforms erstellte
+                        Formular ein gebunden#}
                         {{boltforms('create_entries')}}
                     </div>
                 </div>
             </div>
         </div>
 </div>
+{#Hier endet der Main block#}
 {% endblock main %}

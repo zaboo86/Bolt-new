@@ -1,4 +1,9 @@
+{# Die Datei erbt an dieser Stelen von der master.twig #}
 {% extends 'partials/_master.twig' %}
+{#Hier beginnt der main Block#}
 {% block main %}
+{#An dieser Stelle wird das Template zur Änderung des Profils
+welches von der Extension Auth bereit gestellt wird eingebunden#}
 {{auth_profile_edit()}}
+{#Hier endet der Main block#}
 {% endblock main %}

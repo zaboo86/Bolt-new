@@ -1,5 +1,10 @@
+{#In dieser Datei wir das Formular zum Erstellung von Tutorien eingebunden#}
+{#Die Datei erbt an dieser Stellen von der master.twig#}
 {% extends 'partials/_master.twig' %}
+{#Es wird die Extension Auth in das Dokument eingebunden#}
 {% set auth= auth() %}
+{% set guid = auth.guid %}
+{#Hier beginnt der main Block, in dem beim Aufrufen dieser Seite der Inhalt angezeigt wird #}
 {% block main%}
   <div style="margin-top:0px;padding-bottom:15px;">
         <div class="container">
@@ -9,11 +14,15 @@
                        <div class="col-md-8 offset-md-2">
                         <h3>Tutorial erstellen:</h3>
                         </div>
+                        {# Es wird an dieser Stelle die Form zum Erstellen
+                        von Tutorien eingebunden mit Hilfe des "override"-Befehls
+                        wird dem Formular noch die User-Id des Erstellers, zum 
+                        Eintragen in die Datenbank, mitgegeben#}
  {{boltforms('create_tutorial', override= {
-                                    'guid': {
-                                        options:{
-                                            attr:{
-                                                value: guid
+                                            'guid': {
+                                                options:{
+                                                        attr:{
+                                                            value: guid
                                                 }
                                             }
                                         }
@@ -24,4 +33,5 @@
             </div>
         </div>
 </div>
+{#Hier endet der Main block#}
 {% endblock main %}

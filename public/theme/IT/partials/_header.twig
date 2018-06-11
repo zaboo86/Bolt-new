@@ -1,3 +1,4 @@
+{# Der Header von der Startseite wird erstellt #}
 {% set list = [] %}
      <div style="margin-top:0px;padding-bottom:15px;">
         <div class="container">
@@ -8,6 +9,8 @@
             </div>
             <div class="row">
                 <div class="col">
+
+{# Die Begrüßungsworte werden eingebunden #}
                     <p class="text-center">{{include('pages/index_text.twig')}}</p>
                 </div>
             </div>
@@ -23,13 +26,19 @@
              <div class="row" style="padding-bottom:0px;">
                 <div class="col" style="padding-top:15px;">
                     <div class="form-group" style="margin-bottom:15px;">
+
+{# Einbinden des suchfeldes mit den dazugehörigen Funktionen #}
                             <form class="field has-addons" method="get" action="{{ path('search') }}" enctype="text/plain">
                             <input class="d-inline-block search-input" value="{% if search is defined %}{{ search|escape }}{% endif %}" placeholder="{{ __('general.phrase.search-ellipsis') }}" type="search"
                                name="search" placeholder="Finde Tutorien" autocomplete="off" style="width:400px;margin-left:auto;margin-right:6px;">
                                 <button class="btn btn-light d-inline-block search-btn"
                             type="submit" style="margin-right:0;margin-left:0;padding:10px;width:46px;height:46px;margin-bottom:3px;"> <i class="fa fa-search"></i></button>
-                      <div class="dropdown d-inline-flex" style="margin-right:0px;margin-left:0px;margin-bottom:0px;padding:0px;"><button class="btn btn-light dropdown-toggle invisible" data-toggle="dropdown" aria-expanded="false" type="button" style="height:46px;padding:10px;margin-left:2px;">Kategorien</button>
-                            <div class="dropdown-menu" role="menu" style="margin-top:3px;margin-right:0px;margin-left:-182px;width:300px;"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                      <div class="dropdown d-inline-flex" style="margin-right:0px;margin-left:0px;margin-bottom:0px;padding:0px;">
+                          <button class="btn btn-light dropdown-toggle invisible" data-toggle="dropdown" aria-expanded="false" type="button" style="height:46px;padding:10px;margin-left:2px;">Kategorien</button>
+                            <div class="dropdown-menu" role="menu" style="margin-top:3px;margin-right:0px;margin-left:-182px;width:300px;">
+                                <a class="dropdown-item" role="presentation" href="#">First Item</a>
+                                <a class="dropdown-item" role="presentation" href="#">Second Item</a>
+                                <a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
                         </div>
                     </div>
                 </div>

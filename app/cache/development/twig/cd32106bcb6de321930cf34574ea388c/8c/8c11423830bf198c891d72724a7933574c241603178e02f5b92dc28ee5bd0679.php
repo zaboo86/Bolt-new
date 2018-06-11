@@ -18,9 +18,9 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "partials/_header.twig"));
 
-        $tags = array("set" => 1, "if" => 27);
-        $filters = array("escape" => 27);
-        $functions = array("include" => 11, "path" => 26, "__" => 27);
+        $tags = array("set" => 2, "if" => 32);
+        $filters = array("escape" => 32);
+        $functions = array("include" => 14, "path" => 31, "__" => 32);
 
         try {
             $this->env->getExtension('Twig_Extension_Sandbox')->checkSecurity(
@@ -42,9 +42,9 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
             throw $e;
         }
 
-        // line 1
-        $context["list"] = array();
         // line 2
+        $context["list"] = array();
+        // line 3
         echo "     <div style=\"margin-top:0px;padding-bottom:15px;\">
         <div class=\"container\">
             <div class=\"row\">
@@ -54,8 +54,10 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
             </div>
             <div class=\"row\">
                 <div class=\"col\">
-                    <p class=\"text-center\">";
-        // line 11
+
+";
+        // line 14
+        echo "                    <p class=\"text-center\">";
         echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed(twig_include($this->env, $context, "pages/index_text.twig"));
         echo "</p>
                 </div>
@@ -72,12 +74,14 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
              <div class=\"row\" style=\"padding-bottom:0px;\">
                 <div class=\"col\" style=\"padding-top:15px;\">
                     <div class=\"form-group\" style=\"margin-bottom:15px;\">
-                            <form class=\"field has-addons\" method=\"get\" action=\"";
-        // line 26
+
+";
+        // line 31
+        echo "                            <form class=\"field has-addons\" method=\"get\" action=\"";
         echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("search"));
         echo "\" enctype=\"text/plain\">
                             <input class=\"d-inline-block search-input\" value=\"";
-        // line 27
+        // line 32
         if (array_key_exists("search", $context)) {
             echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed(twig_escape_filter($this->env, ($context["search"] ?? null)));
         }
@@ -87,8 +91,12 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
                                name=\"search\" placeholder=\"Finde Tutorien\" autocomplete=\"off\" style=\"width:400px;margin-left:auto;margin-right:6px;\">
                                 <button class=\"btn btn-light d-inline-block search-btn\"
                             type=\"submit\" style=\"margin-right:0;margin-left:0;padding:10px;width:46px;height:46px;margin-bottom:3px;\"> <i class=\"fa fa-search\"></i></button>
-                      <div class=\"dropdown d-inline-flex\" style=\"margin-right:0px;margin-left:0px;margin-bottom:0px;padding:0px;\"><button class=\"btn btn-light dropdown-toggle invisible\" data-toggle=\"dropdown\" aria-expanded=\"false\" type=\"button\" style=\"height:46px;padding:10px;margin-left:2px;\">Kategorien</button>
-                            <div class=\"dropdown-menu\" role=\"menu\" style=\"margin-top:3px;margin-right:0px;margin-left:-182px;width:300px;\"><a class=\"dropdown-item\" role=\"presentation\" href=\"#\">First Item</a><a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Second Item</a><a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Third Item</a></div>
+                      <div class=\"dropdown d-inline-flex\" style=\"margin-right:0px;margin-left:0px;margin-bottom:0px;padding:0px;\">
+                          <button class=\"btn btn-light dropdown-toggle invisible\" data-toggle=\"dropdown\" aria-expanded=\"false\" type=\"button\" style=\"height:46px;padding:10px;margin-left:2px;\">Kategorien</button>
+                            <div class=\"dropdown-menu\" role=\"menu\" style=\"margin-top:3px;margin-right:0px;margin-left:-182px;width:300px;\">
+                                <a class=\"dropdown-item\" role=\"presentation\" href=\"#\">First Item</a>
+                                <a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Second Item</a>
+                                <a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Third Item</a></div>
                         </div>
                     </div>
                 </div>
@@ -111,7 +119,7 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
 
     public function getDebugInfo()
     {
-        return array (  81 => 27,  77 => 26,  59 => 11,  48 => 2,  46 => 1,);
+        return array (  85 => 32,  80 => 31,  60 => 14,  48 => 3,  46 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -124,7 +132,8 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% set list = [] %}
+        return new Twig_Source("{# Der Header von der Startseite wird erstellt #}
+{% set list = [] %}
      <div style=\"margin-top:0px;padding-bottom:15px;\">
         <div class=\"container\">
             <div class=\"row\">
@@ -134,6 +143,8 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
             </div>
             <div class=\"row\">
                 <div class=\"col\">
+
+{# Die Begrüßungsworte werden eingebunden #}
                     <p class=\"text-center\">{{include('pages/index_text.twig')}}</p>
                 </div>
             </div>
@@ -149,13 +160,19 @@ class __TwigTemplate_bc5c597718acc1cf04071e546e3b960e69e096620f22660f45ed42f3225
              <div class=\"row\" style=\"padding-bottom:0px;\">
                 <div class=\"col\" style=\"padding-top:15px;\">
                     <div class=\"form-group\" style=\"margin-bottom:15px;\">
+
+{# Einbinden des suchfeldes mit den dazugehörigen Funktionen #}
                             <form class=\"field has-addons\" method=\"get\" action=\"{{ path('search') }}\" enctype=\"text/plain\">
                             <input class=\"d-inline-block search-input\" value=\"{% if search is defined %}{{ search|escape }}{% endif %}\" placeholder=\"{{ __('general.phrase.search-ellipsis') }}\" type=\"search\"
                                name=\"search\" placeholder=\"Finde Tutorien\" autocomplete=\"off\" style=\"width:400px;margin-left:auto;margin-right:6px;\">
                                 <button class=\"btn btn-light d-inline-block search-btn\"
                             type=\"submit\" style=\"margin-right:0;margin-left:0;padding:10px;width:46px;height:46px;margin-bottom:3px;\"> <i class=\"fa fa-search\"></i></button>
-                      <div class=\"dropdown d-inline-flex\" style=\"margin-right:0px;margin-left:0px;margin-bottom:0px;padding:0px;\"><button class=\"btn btn-light dropdown-toggle invisible\" data-toggle=\"dropdown\" aria-expanded=\"false\" type=\"button\" style=\"height:46px;padding:10px;margin-left:2px;\">Kategorien</button>
-                            <div class=\"dropdown-menu\" role=\"menu\" style=\"margin-top:3px;margin-right:0px;margin-left:-182px;width:300px;\"><a class=\"dropdown-item\" role=\"presentation\" href=\"#\">First Item</a><a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Second Item</a><a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Third Item</a></div>
+                      <div class=\"dropdown d-inline-flex\" style=\"margin-right:0px;margin-left:0px;margin-bottom:0px;padding:0px;\">
+                          <button class=\"btn btn-light dropdown-toggle invisible\" data-toggle=\"dropdown\" aria-expanded=\"false\" type=\"button\" style=\"height:46px;padding:10px;margin-left:2px;\">Kategorien</button>
+                            <div class=\"dropdown-menu\" role=\"menu\" style=\"margin-top:3px;margin-right:0px;margin-left:-182px;width:300px;\">
+                                <a class=\"dropdown-item\" role=\"presentation\" href=\"#\">First Item</a>
+                                <a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Second Item</a>
+                                <a class=\"dropdown-item\" role=\"presentation\" href=\"#\">Third Item</a></div>
                         </div>
                     </div>
                 </div>

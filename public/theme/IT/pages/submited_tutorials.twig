@@ -1,5 +1,14 @@
-{% extends 'partials/_master.twig' %} {% set auth=auth().guid %} {% set guid=auth %} {% block main %} {% if auth_has_role('Tutor')
-%} {% setcontent abos='abo' where {guid:guid} %} {% setcontent creates = "tutorials/latest/6" where {guid:guid} %}
+{#In dieser Datei wird für den Tutor eine Uebersicht ueber seine abonierten Tutorien erstellt#}
+{#Die Datei erbt an dieser Stellen von der master.twig#}
+{% extends 'partials/_master.twig' %} 
+{#Hier wird die User id von Auth ermittlet#}
+{% set auth=auth().guid %} 
+{% set guid=auth %} 
+{#Hier begint der main Block#}
+{% block main %} 
+{% if auth_has_role('Tutor')%} 
+{% setcontent abos='abo' where {guid:guid} %} 
+{% setcontent creates = "tutorials/latest/6" where {guid:guid} %}
 <div class="article-list" style="padding-bottom:15px;">
     <div class="container">
         <div class="row">
@@ -87,4 +96,6 @@
                 </article>
                 {% endif %} {% endfor %} {% else %}
                 <h4>Erstell dir ein Account, um Tutorials und die jeweiligen Fortschritte zu speichern.</h4>
-                {% endif %} {% endblock %}
+                {% endif %} 
+                {#Hier endet der Main block#}
+                {% endblock %}

@@ -1,6 +1,9 @@
-{% setcontent entries = "entries/latest/3" %}
+{# Es werden alle Einträge von dem Tutorial aus der Datenbank abgefragt #}
+{% setcontent entries = "entries/latest/50" %}
 {% set relatedrecords = record.related()[0] %}     
 {% setcontent entry='entries' where{tutorialid:relatedrecords.id} %}
+
+{# Wenn keine Quizze vorhanden sind, wird kein Menu dargestellt #}
     {% if entry is not empty %}
         <ul>
         {% for related in entry %}

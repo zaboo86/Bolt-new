@@ -921,7 +921,7 @@
                     "group": "ungrouped",
                     "label": "",
                     "variant": "",
-                    "type": "file",
+                    "type": "filelist",
                     "extensions": [
                         "twig",
                         "html",
@@ -983,6 +983,54 @@
             "viewless": false,
             "liveeditor": false,
             "tablename": "upload",
+            "allow_numeric_slugs": false,
+            "singleton": false,
+            "groups": []
+        },
+        "q_answers": {
+            "name": "q_answers",
+            "singular_name": "q_answer",
+            "fields": {
+                "answer": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "select",
+                    "values": {
+                        "Answer1": "answer1",
+                        "Answer2": "answer2",
+                        "Answer3": "answer3",
+                        "Answer4": "answer4"
+                    }
+                },
+                "usrname": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                },
+                "slugquiz": {
+                    "class": "",
+                    "default": "",
+                    "group": "ungrouped",
+                    "label": "",
+                    "variant": "",
+                    "type": "hidden"
+                }
+            },
+            "slug": "q-answers",
+            "singular_slug": "q-answer",
+            "show_on_dashboard": true,
+            "show_in_menu": true,
+            "sort": false,
+            "default_status": "draft",
+            "viewless": false,
+            "liveeditor": false,
+            "tablename": "q_answers",
             "allow_numeric_slugs": false,
             "singleton": false,
             "groups": []

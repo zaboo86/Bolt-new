@@ -1,5 +1,18 @@
-{% extends 'partials/_master.twig' %} {% set auth=auth().guid %} {% set guid=auth %} {% block main %} {% if auth_has_role('Tutor')
-%} {% setcontent abos='abo' where {guid:guid} %} {% setcontent creates = "tutorials/latest/6" where {guid:guid} %}
+{# Diese Datei erstellt eine Uebersicht ueber alle abonierte Tutorien#}
+{#Die Datei erbt an dieser Stelen von der master.twig#}
+{% extends 'partials/_master.twig' %}
+{#An dieser Stelle wir die Extension Auth eingebunden#}
+{% set auth=auth().guid %}
+{# Es wird die User-Id ausgelesen#}
+{% set guid=auth %}
+{#Hier beginnt der main Block#}
+{% block main %}
+{# Sobald ein User ein Tutor ist wird sein Tutorial Button zum Drop Down Menue in
+dem er auswaehlen kann ob er seine eigenen Tutorien oder die abonierten Tutorien sehen will#}
+{% if auth_has_role('Tutor')%}
+{#{% setcontent abos='abo' where {guid:guid} %} #}
+{% setcontent creates = "tutorials/latest/6" where {guid:guid} %}
+
 <div class="article-list" style="padding-bottom:15px;">
     <div class="container">
         <div class="row">
@@ -7,11 +20,15 @@
                 <h2 class="text-center">Meine Tutorien</h2>
             </div>
         </div>
-        {% setcontent tutorials= 'tutorials' where {guid :guid } %} {% for tutorial in tutorials %}
+        {#an dieser Stellen rufen wir die Daten zu den Tutorien aus
+        der Datenbank ab und filtern diese nach den User Ids#}
+        {% setcontent tutorials= 'tutorials' where {guid :guid } %}
+        {% for tutorial in tutorials %}
         <div class="row" style="padding-top:15px;padding-bottom:30px;">
             <div class="col">
                 <div class="row">
                     <div class="col">
+                        
                         {% if tutorial.image is not empty %}
                         <a href="{{ tutorial.link }}">
                             <img class="img-fluid d-block" src="/thumbs/640x480c/2018-06/{{ tutorial.image|default() }}" style="margin:0 auto;width:360px;">
@@ -28,9 +45,6 @@
                                 </a>
                                 <button class="btn btn-light" type="button" style="margin-right:15px;">Kursteilnahme beenden</button>
                                 <div class="btn-group" role="group" style="padding:15px;">
-                                    <button class="btn btn-light" type="button" style="padding-left:11px;margin-left:0px;margin-right:15px;">Kurs bearbeiten</button>
-                                    <button class="btn btn-light" type="button" style="margin-right:15px;">Kursauswertung</button>
-                                    <button class="btn btn-light" type="button" style="margin-right:15px;">Kurs löschen</button>
                                 </div>
                             </div>
                         </div>
@@ -38,6 +52,7 @@
                 </div>
             </div>
         </div>
+        {# Solten noch keine Tutorien aboniert sein wird diese Meldung ausgegeben#}
         {% endfor %} {% if tutorials is empty and creates is empty %}
         <article role="article" class="media">
             <div class="media-content">
@@ -46,7 +61,9 @@
                 </div>
             </div>
         </article>
-        {% endif %} {% elseif auth_has_role('Member') %} {% setcontent tutorialids = "abo" where {guid: guid} %}
+        {% endif %}
+        {#An dieser Stelle beginnt die Ansicht eines Members in der er seine abonierten Tutorien angezeigt bekommt#}
+        {% elseif auth_has_role('Member') %} {% setcontent tutorialids = "abo" where {guid: guid} %}
         <div class="article-list" style="padding-bottom:15px;">
             <div class="container">
                 <div class="row">
@@ -89,6 +106,8 @@
                         </div>
                     </div>
                 </article>
-                {% endif %} {% endfor %} {% else %}
+                {% endif %} {% endfor %}
+                {#Sollte ein Unregistrieter Benutzer auf Tutorial klicken wird aufgefordert sich zu registrieren#}
+                {% else %}
                 <h4>Erstell dir ein Account, um Tutorials und die jeweiligen Fortschritte zu speichern.</h4>
                 {% endif %} {% endblock %}

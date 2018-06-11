@@ -1,4 +1,7 @@
+{# Erbt von der Master #}
 {% extends 'partials/_master.twig' %}
+
+{# Variablen werden gesetzt #}
 {% set tid= record.id %}
 {% set auth=auth().guid %}
 {% set guid=auth %}
@@ -6,23 +9,33 @@
 {% set valueX = 1 %}
 {% set id = record.id %}
 {% setcontent visible = 'abo' where {guid: guid, tutorialid: id} %}
-{% block main %}          
+
+{# Der Main-Block wird definiert, wo die anzuzeigenden Elemente dargestellt werden #}
+{% block main %}       
+
+{# Fügt den Sub-Head zu dieser Seite hinzu #}
 {% include 'partials/_sub_head.twig' %}
                <div style="margin-top:0px;padding-bottom:15px;">
         <div class="container">
             <div class="row">     
          <div class="row">
                 <div class="col-md-4" style="padding-right:50px;padding-left:0px;margin-left:0px;padding-top:15px;padding-bottom:15px;">
+
+{# Wenn ein Bild vorhanden ist, wird es an dieser Stelle eingebuden #}
                      {% if record.image is not empty %}
                                      <img class="d-block" id="tutorial_overview-image" style="margin:0 auto;width:300px;"
                              src="/thumbs/300x300c/2018-06/{{ record.image|default() }}"  />     
                      {% endif %}
              </div>
                 <div class="col-md-8" style="padding:15px;">
+                    
+{# Der zugewiesene Titel des Tutorials wird eingebunden, sowie die Kurzbeschriebeung #}
                     <h1 style="font-size:24px;">Tutorial Overview: {{ record.title }}</h1>
                     <p>{{ record.teaser }}</p>
                     <div class="btn-toolbar">
                         <div class="btn-group" role="group" style="padding:15px;">
+
+{# Sobald Einträge zum Kurs vorhanden sind, wird der Button zum Kurs hinzugefügt #} 
                             {% for related in relatedrecords %}
                             {% if valueX == 1 %}
                          <a href=" {{related.link}}">
@@ -33,11 +46,15 @@
                         </div>
                     </div>
                 </div>        
+
+{# Der zugewiesene Body des Tutorials wird eingebunden #}
                 <div class="col" style="padding-top:0px;padding-right:30px;padding-left:30px;">
                     <h1 id="course-description-heading" style="font-size:24px;">Kursbeschreibung</h1>
                     <p>{{ record.body }}</p>
                     <div class="btn-toolbar">
                         <div class="btn-group" role="group" style="padding:15px;">
+                            
+{# Wenn der User Member oder Tutor ist, wird die Funktion, sich in ein Tutorial einzutragen zurverfügung gestellt #}
                         {% if auth_has_role('Member') or auth_has_role('Tutor') %}
                         {% if visible is empty %}
                             
@@ -65,5 +82,7 @@
                 </div>
             </div>
         </div>
-    </div>                     
+    </div>              
+                  
+{# Der Main-Block wird wieder geschlossen #}
 {% endblock main %}
